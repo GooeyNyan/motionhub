@@ -1,5 +1,5 @@
 ## motionhub
-[motionhub](http://opensource.org/licenses/MIT) 视频网站
+[motionhub](http://motionhub.app/) 视频网站
 
 ### License
 
