@@ -1,6 +1,6 @@
 ## motionhub
 
-[motionhub](http://motionhub.app/) 视频网站
+[motionhub](http://motionhub.app/) 视频网站 an excellent site
 
 ### License
 
