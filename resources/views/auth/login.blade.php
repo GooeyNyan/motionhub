@@ -1,68 +1,49 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+    <div class="signin-container">
+        <div class="signin_wrapper">
+            <!-- logo -->
+            <div class="logo">
+                <img src="{{ asset('images/logo-2.png') }}" alt="motionhub logo">
+            </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+            <!-- signin form -->
+            <div class="form-wrapper">
+                <form action="#" method="post">
+                    {{ csrf_field() }}
+                    <div class="signin-control">
+                        <label>
+                            <span class="desc name">用户名</span>
+                            <input type="text" name="name" class="signin-input" required autofocus>
+                        </label>
+                    </div>
+                    <div class="signin-control">
+                        <label>
+                            <span class="desc psw">密码</span>
+                            <input type="password" name="password" class="signin-input" required>
+                        </label>
+                    </div>
+                    {{--<div>--}}
+                        {{--<div class="checkbox">--}}
+                            {{--<label>--}}
+                                {{--<input type="checkbox" name="is_remember"> 记住我--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                        <div class="signin_links">
+                            <div class="link-wrapper">
+                                <a href="#">忘记密码?</a>
+                            </div>
+                            <div class="link-wrapper">
+                                <a href="{{ route('register') }}">注册账号</a>
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    {{--</div>--}}
+                    <div class="button-wrapper">
+                        <button type="submit" class="signin_button">登录</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
