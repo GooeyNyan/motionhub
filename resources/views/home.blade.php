@@ -10,7 +10,6 @@
 
 @section('content')
     @include('layouts._header')
-
     <main id="index">
         <div class="navbar">
             <div class="nav-item index"><a href="{{ route('home') }}">首页</a></div>
@@ -211,5 +210,60 @@
                 </div>
             </div>
         </div>
+
+        <div class="video-container">
+            <div class="video-watching"></div>
+        </div>
+
     </main>
+
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        let mockData;
+
+        function init() {
+            $.getJSON("mockVideos.json", (data) => {
+                mockData = data;
+                let videoTags = ['hot', 'new', 'titles', 'showreels'];
+                for (let tag of videoTags) {
+                    let videoList = document.getElementsByClassName(tag)[0];
+                    let videos = videoList.getElementsByClassName('video-item');
+                    let i = 0;
+                    let mockTag = "hot";
+
+                    for (let video of videos) {
+                        let mockIndex = i < mockData[mockTag].length ? i : mockData[mockTag].length - 1;
+                        let img = document.createElement('img');
+                        img.src = mockData[mockTag][mockIndex].image;
+                        video.onclick = videoWatch;
+                        video.dataset.index = i++;
+                        video.dataset.tag = tag;
+                        video.appendChild(img);
+                    }
+                }
+            });
+        }
+
+        function videoWatch() {
+            console.log(this.dataset.index);
+
+            let videoContainer = document.getElementsByClassName('video-container')[0];
+            let videoWatching = videoContainer.getElementsByClassName('video-watching')[0];
+            let videoTag = this.dataset.tag;
+            let videoIndex = this.dataset.index;
+            videoTag = 'hot';
+            videoIndex = videoIndex >= mockData[videoTag].length ? mockData[videoTag].length - 1 : videoIndex;
+
+            videoContainer.style.zIndex = 100;
+
+            videoWatching.innerHTML = mockData[videoTag][videoIndex].url;
+            console.log(mockData[videoTag][videoIndex].title);
+            videoContainer.onclick = function () {
+                videoWatching.innerHTML = '';
+                videoContainer.style.zIndex = -100;
+            }
+        }
+
+        window.onload = init();
+    </script>
 @stop
