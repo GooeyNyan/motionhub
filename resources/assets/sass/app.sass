@@ -1,9 +1,527 @@
-
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600)
 
-// Variables
-@import "variables"
-
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"
+@import "variables"
+@import "mixin"
+@import "media"
+
+html, body
+  margin: 0
+
+p, h1, h2, h3, h4, h5, h6
+  margin: 0
+
+a
+  text-decoration: none
+  &:visited, &:hover, &:focus, &:active, &:link
+    color: #fff
+
+header
+  display: flex
+  position: relative
+  width: 100%
+  height: 120px
+  align-items: center
+  background: $header-color
+  .logo
+    margin-left: 88px
+  .search-wrapper
+    position: relative
+    margin-left: 30px
+    form
+      position: relative
+      .video-search
+        padding-left: 18px
+        width: 560px
+        height: 55px
+        font-size: 16px
+        color: $search-input-color
+        box-sizing: border-box
+        border: 2px solid $search-box-color
+        border-radius: 2px
+        box-shadow: inset 0 0 3px black, 0 0 3px black
+        background: transparent
+        &::placeholder
+          font-size: 16px
+          color: $search-input-color
+          text-shadow: 0 0 2px black
+      .search-submit
+        position: absolute
+        right: 6px
+        top: 14px
+    .desc
+      position: absolute
+      left: 0
+      bottom: -20px
+      font-size: 12px
+      color: #8F8F8F
+      text-shadow: 0 0 1px black
+  .video-submit, .login-btn
+    position: absolute
+    right: 28px
+    top: 40px
+    @include button
+
+main#index
+  background: $main-container-color
+  .navbar
+    width: 100%
+    height: 64px
+    background: $navbar-color
+    .nav-item
+      display: inline-block
+      padding: 0 22px
+      line-height: 64px
+      color: #fff
+      .angle
+        margin-left: 8px
+  .container-fluid
+    display: flex
+    width: 100%
+    .share
+      flex: 1
+      margin-top: 80px
+      .icon-wrapper
+        display: flex
+        margin: 0 auto
+        width: 190px
+        flex-wrap: wrap
+        justify-content: space-around
+        .icon-item
+          display: inline-block
+          margin-top: 12px
+          &:nth-of-type(-n + 3)
+            margin-top: 0
+      .desc
+        margin: 10px auto
+        width: 160px
+        line-height: 24px
+        font-size: 16px
+        color: #666
+        text-shadow: 0 0 1px #666
+    .videos
+      margin-bottom: 12px
+      padding: 0 55px
+      flex: 0 0 1090px
+      background: #fff
+      box-shadow: 0 0 3px rgba(102, 102, 102, 0.7)
+      .hot
+        margin-top: 55px
+        .header
+          position: relative
+          padding-bottom: 19px
+          @include border-bottom
+          .title
+            font-size: 28px
+            color: $content-title-color
+          .pagination
+            position: absolute
+            right: 0
+            top: 0
+            font-size: 0
+            .prev, .next
+              display: inline-block
+              width: 53px
+              height: 39px
+              line-height: 48px
+              text-align: center
+              box-sizing: border-box
+              border: 1px solid $pagination-btn-border-color
+              border-radius: 2px
+            .next
+              margin-left: 14px
+        .content
+          display: flex
+          padding: 46px 0
+          @include border-bottom
+          .hero
+            display: inline-block
+          .other
+            display: inline-block
+            flex: 1
+            .videos-wrapper
+              display: flex
+              flex-wrap: wrap
+          .video-item
+            position: relative
+            @include video-items
+            margin: 8px 0 0 15px
+            .title
+              position: absolute
+              width: calc(100% - 22px)
+              bottom: 0
+              padding-left: 22px
+              line-height: 50px
+              color: $video-title-color
+              background: linear-gradient(0deg, rgba(150, 150, 150, 0.15), rgba(54, 54, 54, 0.1))
+            &.main
+              margin: 0
+              width: 537px
+              height: 353px
+            &:nth-of-type(-n + 2)
+              margin-top: 0
+      .new
+        @include header
+        @include video-list
+      .titles
+        @include header
+        @include video-list
+      .showreels
+        @include header
+        @include video-list
+        .content
+          &
+            border-bottom: 0
+    .subscription-wrapper
+      flex: 2
+      .subscription
+        margin: 40px auto
+        width: 402px
+        height: 333px
+        color: #999
+        background: #fff
+        .title
+          padding-top: 26px
+          text-align: center
+          & > h2
+            font-size: 26px
+            font-weight: normal
+        .desc
+          margin: 24px 0 0 58px
+          line-height: 24px
+          font-size: 14px
+        .subscribe-btn
+          display: block
+          margin: 24px auto 0 auto
+          width: 297px
+          height: 59px
+          font-size: 22px
+          color: #fff
+          border: 0
+          box-shadow: -1px 1px 3px rgba(7, 17, 27, 0.3)
+          background: #00bff3
+        .text-box
+          position: relative
+          .subscribe-input
+            display: block
+            margin: 7px auto 0 auto
+            padding-left: 14px
+            width: 283px
+            height: 35px
+            font-size: 16px
+            border: 1px solid #ccc
+            box-shadow: -1px 1px 4px rgba(7, 17, 27, 0.2)
+            &::placeholder
+              font-size: 16px
+              color: #d3d3d3
+          .icon-envelope
+            position: absolute
+            right: 63px
+            top: 12px
+
+main#center
+  .banner
+    display: flex
+    position: relative
+    align-items: center
+    width: 100%
+    height: 482px
+    background: $banner-background-color
+    .title-wrapper
+      min-width: 400px
+      margin-left: 222px
+      .title
+        line-height: 75px
+        font-size: 50px
+        font-family: SimHei, serif
+        color: #fff
+      .check
+        margin-top: 16px
+        @include button
+    .img-wrapper
+      display: flex
+      flex: 1
+      margin-left: 116px
+      justify-content: space-around
+      img
+        width: 406px
+        height: 406px
+        border-radius: 50%
+    .pagination
+      display: flex
+      position: absolute
+      bottom: 12px
+      justify-content: center
+      width: 100%
+      .page
+        margin-right: 14px
+        width: 16px
+        height: 16px
+        border-radius: 50%
+        background: $pagination-color
+        &.active
+          background: $pagination-active-color
+  .profile
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    width: 100%
+    height: 88px
+    .avatar
+      width: 34px
+      height: 34px
+    .committee
+      display: flex
+      align-items: center
+      justify-content: space-around
+      margin: 0 58px 0 38px
+      @include button
+      .text
+        margin-left: -16px
+    .shopcart, .info, .avatar
+      margin-left: 20px
+  .video-list
+    display: flex
+    flex-wrap: wrap
+    margin: 0 auto
+    padding: 0 17px
+    width: 1125px
+    border-top: 2px solid #7fccfe
+    .video-card
+      margin: 33px 17px 0 0
+      width: 358px
+      height: 508px
+      font-size: 0
+      border-radius: 4px
+      box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.2)
+      .video-img
+        width: 100%
+        height: 233px
+        border-top-left-radius: 4px
+        border-top-right-radius: 4px
+      .content
+        position: relative
+        padding: 0 26px
+        height: calc(100% - 233px)
+        .title
+          padding-top: 28px
+          min-height: 66px
+          font-size: 18px
+          color: #0099ff
+          text-align: center
+        .avatar-wrapper
+          display: flex
+          justify-content: flex-start
+          align-items: center
+          .info
+            margin-left: 12px
+            font-size: 14px
+            color: #707070
+        .level-length
+          margin-top: 21px
+          .level
+            display: inline-block
+            font-size: 12px
+            .circle
+              display: inline-block
+              margin-right: 8px
+              vertical-align: -5%
+              width: 12px
+              height: 12px
+              border-radius: 50%
+            &.primary
+              color: $lesson-primary-color
+              .circle
+                background: $lesson-primary-color
+            &.intermediate
+              color: $lesson-intermediate-color
+              .circle
+                background: $lesson-intermediate-color
+            &.advanced
+              color: $lesson-advanced-color
+              .circle
+                background: $lesson-advanced-color
+          .length
+            display: inline-block
+            margin-left: 26px
+            font-size: 12px
+            color: #707070
+            img
+              margin-right: 4px
+        .buy
+          display: flex
+          position: absolute
+          bottom: 26px
+          right: 32px
+          width: 88px
+          height: 34px
+          justify-content: space-between
+          align-items: center
+          line-height: 34px
+          font-size: 19px
+          font-family: SimHei, serif
+          color: #fff
+          text-align: left
+          border: 0
+          border-radius: 3px
+          background: #0099ff
+          img
+            vertical-align: sub
+
+// 登录界面
+.signin-container
+  width: 100%
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url("/images/bg.jpg")
+  background-size: cover
+  .signin_wrapper
+    padding: 0 100px
+    width: 501px
+    height: 427px
+    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
+    border-radius: 17px
+    background: rgba(56, 96, 122, 0.44)
+    .logo
+      display: flex
+      margin-top: 38px
+      justify-content: center
+    .form-wrapper
+      margin-top: 44px
+      color: #fff
+      .signin-control
+        position: relative
+        font-size: 16px
+        &:nth-of-type(n + 2)
+          margin-top: 20px
+        .desc
+          display: inline-block
+          position: absolute
+          line-height: 54px
+          &.name
+            letter-spacing: 2px
+          &.psw
+            letter-spacing: 19px
+        .signin-input
+          padding: 0 0 0 60px
+          width: calc(100% - 60px)
+          height: 54px
+          line-height: 54px
+          font-size: 16px
+          color: #fff
+          border: 0
+          border-bottom: 1px solid #fff
+          background: rgba(0, 0, 0, 0)
+      .signin_links
+        float: right
+        display: flex
+        justify-content: flex-end
+        font-size: 12px
+        .link-wrapper
+          padding-top: 14px
+          letter-spacing: 1px
+          &:first-of-type
+            margin-right: 24px
+            & a
+              padding-right: 7px
+          &:last-of-type
+            margin-right: 4px
+          & a
+            border-bottom: 1px solid #fff
+            text-decoration: none
+            &:hover, &:visited, &:active, &:focus
+              color: #fff
+      .button-wrapper
+        display: flex
+        justify-content: center
+        .signin_button
+          margin-top: 35px
+          padding: 0
+          width: 348px
+          height: 45px
+          line-height: 45px
+          font-size: 14px
+          color: white
+          text-align: center
+          letter-spacing: 7px
+          border: 0
+          border-radius: 22px
+          background-color: #02D7C1
+.register-container
+  width: 100%
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url("/images/bg.jpg")
+  background-size: cover
+  .register_wrapper
+    padding: 0 100px 50px 100px
+    width: 501px
+    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
+    border-radius: 17px
+    background: rgba(56, 96, 122, 0.44)
+    .logo
+      display: flex
+      margin-top: 38px
+      justify-content: center
+    .form-wrapper
+      margin-top: 44px
+      color: #fff
+      .register-control
+        position: relative
+        font-size: 16px
+        &:nth-of-type(n + 2)
+          margin-top: 20px
+        .desc
+          display: inline-block
+          position: absolute
+          line-height: 54px
+        .register-input
+          padding: 0 0 0 80px
+          width: calc(100% - 80px)
+          height: 54px
+          line-height: 54px
+          font-size: 16px
+          color: #fff
+          border: 0
+          border-bottom: 1px solid #fff
+          background: rgba(0, 0, 0, 0)
+      .register_links
+        display: flex
+        justify-content: flex-end
+        font-size: 12px
+        .link-wrapper
+          padding-top: 14px
+          letter-spacing: 1px
+          &:first-of-type
+            margin-right: 24px
+            & a
+              padding-right: 7px
+          &:last-of-type
+            margin-right: 4px
+          & a
+            border-bottom: 1px solid #fff
+            text-decoration: none
+            &:hover, &:visited, &:active, &:focus
+              color: #fff
+      .button-wrapper
+        display: flex
+        justify-content: center
+        .register_button
+          margin-top: 35px
+          padding: 0
+          width: 348px
+          height: 45px
+          line-height: 45px
+          font-size: 14px
+          color: white
+          text-align: center
+          letter-spacing: 7px
+          border: 0
+          border-radius: 22px
+          background-color: #02D7C1
