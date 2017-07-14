@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Hot;
 use Illuminate\Http\Request;
 
-class hotcontroller extends Controller
+class HotController extends Controller
 {
     //
     public function index()
     {
-        return hot::all();
+        return Hot::all();
     }
+}
