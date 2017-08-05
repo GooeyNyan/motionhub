@@ -15,7 +15,7 @@
                     <div class="signin-control">
                         <label>
                             <span class="desc name">用户名</span>
-                            <input type="text" name="name" class="signin-input" required autofocus>
+                            <input name="name" class="signin-input" required autofocus>
                         </label>
                     </div>
                     <div class="signin-control">
