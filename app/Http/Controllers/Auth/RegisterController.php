@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Naux\Mail\SendCloudTemplate;
 
 class RegisterController extends Controller
 {
@@ -27,12 +29,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -58,14 +59,35 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'avatar' => '/images/avatars/default.png',
+            'confirmation_token' => str_random(40),
             'password' => bcrypt($data['password']),
         ]);
+
+        $this->sendVerifyEmailToUser($user);
+
+        return $user;
+    }
+
+    private function sendVerifyEmailToUser($user)
+    {
+        $data = [
+            'url' => route('email.verify', $user->confirmation_token),
+            'name' => $user->name
+        ];
+        $template = new SendCloudTemplate('motionhub_register', $data);
+
+        Mail::raw($template, function ($message) use ($user) {
+            $message->from('Sanjwinds@gmail.com', 'GooeyNyan');
+
+            $message->to($user->email);
+        });
     }
 }

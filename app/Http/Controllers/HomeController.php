@@ -6,9 +6,24 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // motionhub 首页
+    /**
+     * Create a new controller instance.
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'vip');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('home');
+        return view('welcome');
     }
+
+
 }

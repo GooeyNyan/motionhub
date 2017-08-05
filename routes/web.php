@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+Route::get('/email/verify/{token}', 'EmailController@verify')->name('email.verify');
 
 Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('/login', 'LoginController@index')->name('login');
-Route::post('/login', 'LoginController@login')->name('login');
-Route::get('/logout', 'LoginController@logout')->name('logout');
-Route::get('/register', 'RegisterController@index')->name('register');
-Route::post('/register', 'RegisterController@store')->name('register');
+Route::resource('video', 'VideoController');
+Route::get('/vip', 'VideoController@vip')->name('vip');
+Route::get('/vip/{id}', 'VideoController@vipShow')->name('vip.show');

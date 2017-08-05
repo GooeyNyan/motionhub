@@ -16,6 +16,18 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['prefix' => 'api/v1'],function(){
-    Route::resource('hot','hotcontroller');
+
+Route::middleware('api')->get('/videos/hot', function (Request $request) {
+
+    $hotVideos = DB::table('videos')
+    ->select('id', 'name', 'link', 'image')
+    ->orderBy('watched', 'desc')
+    ->take($request->query('amount'))
+    ->get();
+
+    $videos = [
+        'hot' => $hotVideos
+    ];
+
+    return $videos;
 });

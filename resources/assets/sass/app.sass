@@ -439,22 +439,7 @@ main#center
             text-decoration: none
             &:hover, &:visited, &:active, &:focus
               color: #fff
-      .button-wrapper
-        display: flex
-        justify-content: center
-        .signin_button
-          margin-top: 35px
-          padding: 0
-          width: 348px
-          height: 45px
-          line-height: 45px
-          font-size: 14px
-          color: white
-          text-align: center
-          letter-spacing: 7px
-          border: 0
-          border-radius: 22px
-          background-color: #02D7C1
+
 .register-container
   width: 100%
   height: 100vh
@@ -513,22 +498,51 @@ main#center
             text-decoration: none
             &:hover, &:visited, &:active, &:focus
               color: #fff
-      .button-wrapper
-        display: flex
-        justify-content: center
-        .register_button
-          margin-top: 35px
-          padding: 0
-          width: 348px
-          height: 45px
-          line-height: 45px
-          font-size: 14px
-          color: white
-          text-align: center
-          letter-spacing: 7px
-          border: 0
-          border-radius: 22px
-          background-color: #02D7C1
+
+.video-submit-container
+  width: 100%
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url("/images/bg.jpg")
+  background-size: cover
+  .video-submit-wrapper
+    padding: 0 100px 50px 100px
+    width: 501px
+    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
+    border-radius: 17px
+    background: rgba(56, 96, 122, 0.44)
+    .logo
+      display: flex
+      margin-top: 38px
+      justify-content: center
+    .form-wrapper
+      margin-top: 44px
+      color: #fff
+      .form-group
+        label
+          display: block
+          margin-bottom: 6px
+      .edui-editor
+        width: 522px !important
+
+.button-wrapper
+  display: flex
+  justify-content: center
+  .signin_button, .register_button, .video-submit-btn
+    margin-top: 35px
+    padding: 0
+    width: 348px
+    height: 45px
+    line-height: 45px
+    font-size: 14px
+    color: white
+    text-align: center
+    letter-spacing: 7px
+    border: 0
+    border-radius: 22px
+    background-color: #02D7C1
 
 .video-container
   display: flex
@@ -541,3 +555,589 @@ main#center
   justify-content: center
   align-items: center
   background: rgba(0, 0, 0, 0.3)
+
+#vip-detail
+  width: 60%
+  margin-left: 20%
+  .head
+    position: relative
+    top: 200px
+    font-size: 44px
+    color: white
+    letter-spacing: 2px
+    text-shadow: 1px 1px 10px black
+  .page
+    position: relative
+    background-color: white
+    width: 100%
+    height: 420px
+    margin-top: -30px
+    top: 250px
+    padding: 20px
+    border-radius: 3px
+    box-shadow: 0 0 30px #8F8F8F
+  .video
+    background-color: #8F8F8F
+    width: 60%
+    height: 420px
+    float: left
+  .right-message
+    float: right
+    margin-right: 40px
+    margin-top: 10px
+    height: 100%
+    width: 30%
+  .notice
+    font-size: 20px
+    color: black
+  .use
+    font-size: 20px
+    color: black
+  .circle
+    background-color: #33b6a0
+    width: 15px
+    height: 15px
+    margin-top: 4px
+    border-radius: 50%
+    float: left
+  .grade
+    color: #33b6a0
+    font-size: 15px
+    margin-left: 5px
+  .ae
+    width: 50px
+    height: auto
+    margin-top: 5px
+    margin-bottom: 10px
+  .time
+    color: black
+  .cd
+    width: 19px
+    height: auto
+  .data
+    color: #979897
+    font-size: 13px
+  .page-end
+    margin-top: 100px
+  .price
+    position: absolute
+    margin-top: 280px
+    right: 18%
+    font-size: 26px
+    color: #737373
+  .buy
+    position: absolute
+    margin-top: 320px
+    right: 17%
+    background-color: #34d69f
+    text-align: center
+    font-size: 15px
+    width: 130px
+    height: 40px
+    border-radius: 3px
+    border: 0
+    color: white
+    float: right
+  .move
+    position: absolute
+    margin-top: 320px
+    right: 28%
+    color: #67b6ff
+    background-color: white
+    text-align: center
+    font-size: 15px
+    width: 100px
+    height: 40px
+    border-radius: 3px
+    border: 1px solid #67b6ff
+  .move img
+    width: 28px
+    height: auto
+    margin-left: 5px
+    vertical-align: -6px
+  .about
+    position: relative
+    top: 350px
+    font-size: 26px
+    color: #6a6a6a
+  .description
+    position: relative
+    top: 360px
+    padding-bottom: 100px
+    width: 60%
+    font-size: 20px
+    line-height: 30px
+    color: #888
+  .description img
+    margin-top: 20px
+    width: 100%
+  
+// bootstrap
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline,
+.has-success.radio label,
+.has-success.checkbox label,
+.has-success.radio-inline label,
+.has-success.checkbox-inline label
+  color: #3c763d
+  
+.has-warning .help-block,
+.has-warning .control-label,
+.has-warning .radio,
+.has-warning .checkbox,
+.has-warning .radio-inline,
+.has-warning .checkbox-inline,
+.has-warning.radio label,
+.has-warning.checkbox label,
+.has-warning.radio-inline label,
+.has-warning.checkbox-inline label
+  color: #8a6d3b
+  
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline,
+.has-error.radio label,
+.has-error.checkbox label,
+.has-error.radio-inline label,
+.has-error.checkbox-inline label
+  color: #a94442
+  
+.help-block
+  display: block
+  margin-top: 5px
+  margin-bottom: 10px
+  color: rgb(200, 200, 200)
+  
+.form-control 
+  display: block
+  width: 100%
+  height: 34px
+  padding: 6px 12px
+  font-size: 14px
+  line-height: 1.42857143
+  color: #555555
+  background-color: #fff
+  background-image: none
+  border: 1px solid #ccc
+  border-radius: 4px
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s
+
+
+.form-control:focus 
+  border-color: #66afe9
+  outline: 0
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6)
+
+
+.form-control::-moz-placeholder 
+  color: #999
+  opacity: 1
+
+
+.form-control:-ms-input-placeholder 
+  color: #999
+
+
+.form-control::-webkit-input-placeholder 
+  color: #999
+
+
+.form-control::-ms-expand 
+  border: 0
+  background-color: transparent
+
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control 
+  background-color: #eeeeee
+  opacity: 1
+
+
+.form-control[disabled],
+fieldset[disabled] .form-control 
+  cursor: not-allowed
+
+
+textarea.form-control 
+  height: auto
+
+
+input[type="search"] 
+  -webkit-appearance: none
+
+
+@media screen and (-webkit-min-device-pixel-ratio: 0)
+  input[type="date"].form-control,
+  input[type="time"].form-control,
+  input[type="datetime-local"].form-control,
+  input[type="month"].form-control
+    line-height: 34px
+
+
+input[type="date"].input-sm,
+.input-group-sm > input[type="date"].form-control,
+.input-group-sm > input[type="date"].input-group-addon,
+.input-group-sm > .input-group-btn > input[type="date"].btn,
+.input-group-sm input[type="date"],
+input[type="time"].input-sm,
+.input-group-sm > input[type="time"].form-control,
+.input-group-sm > input[type="time"].input-group-addon,
+.input-group-sm > .input-group-btn > input[type="time"].btn,
+.input-group-sm
+input[type="time"],
+input[type="datetime-local"].input-sm,
+.input-group-sm > input[type="datetime-local"].form-control,
+.input-group-sm > input[type="datetime-local"].input-group-addon,
+.input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
+.input-group-sm
+input[type="datetime-local"],
+input[type="month"].input-sm,
+.input-group-sm > input[type="month"].form-control,
+.input-group-sm > input[type="month"].input-group-addon,
+.input-group-sm > .input-group-btn > input[type="month"].btn,
+.input-group-sm
+input[type="month"] 
+  line-height: 30px
+
+
+input[type="date"].input-lg,
+.input-group-lg > input[type="date"].form-control,
+.input-group-lg > input[type="date"].input-group-addon,
+.input-group-lg > .input-group-btn > input[type="date"].btn,
+.input-group-lg input[type="date"],
+input[type="time"].input-lg,
+.input-group-lg > input[type="time"].form-control,
+.input-group-lg > input[type="time"].input-group-addon,
+.input-group-lg > .input-group-btn > input[type="time"].btn,
+.input-group-lg
+input[type="time"],
+input[type="datetime-local"].input-lg,
+.input-group-lg > input[type="datetime-local"].form-control,
+.input-group-lg > input[type="datetime-local"].input-group-addon,
+.input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
+.input-group-lg
+input[type="datetime-local"],
+input[type="month"].input-lg,
+.input-group-lg > input[type="month"].form-control,
+.input-group-lg > input[type="month"].input-group-addon,
+.input-group-lg > .input-group-btn > input[type="month"].btn,
+.input-group-lg
+input[type="month"] 
+  line-height: 46px
+
+
+
+.form-group 
+  margin-bottom: 15px
+
+
+.form-control-static 
+  padding-top: 7px
+  padding-bottom: 7px
+  margin-bottom: 0
+  min-height: 34px
+
+
+.form-control-static.input-lg,
+.input-group-lg > .form-control-static.form-control,
+.input-group-lg > .form-control-static.input-group-addon,
+.input-group-lg > .input-group-btn > .form-control-static.btn,
+.form-control-static.input-sm,
+.input-group-sm > .form-control-static.form-control,
+.input-group-sm > .form-control-static.input-group-addon,
+.input-group-sm > .input-group-btn > .form-control-static.btn 
+  padding-left: 0
+  padding-right: 0
+
+
+.input-sm,
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
+.input-group-sm > .input-group-btn > .btn 
+  height: 30px
+  padding: 5px 10px
+  font-size: 12px
+  line-height: 1.5
+  border-radius: 3px
+
+
+select.input-sm,
+.input-group-sm > select.form-control,
+.input-group-sm > select.input-group-addon,
+.input-group-sm > .input-group-btn > select.btn 
+  height: 30px
+  line-height: 30px
+
+
+textarea.input-sm,
+.input-group-sm > textarea.form-control,
+.input-group-sm > textarea.input-group-addon,
+.input-group-sm > .input-group-btn > textarea.btn,
+select[multiple].input-sm,
+.input-group-sm > select[multiple].form-control,
+.input-group-sm > select[multiple].input-group-addon,
+.input-group-sm > .input-group-btn > select[multiple].btn 
+  height: auto
+
+
+.form-group-sm .form-control 
+  height: 30px
+  padding: 5px 10px
+  font-size: 12px
+  line-height: 1.5
+  border-radius: 3px
+
+
+.form-group-sm select.form-control 
+  height: 30px
+  line-height: 30px
+
+
+.form-group-sm textarea.form-control,
+.form-group-sm select[multiple].form-control 
+  height: auto
+
+
+.form-group-sm .form-control-static 
+  height: 30px
+  min-height: 32px
+  padding: 6px 10px
+  font-size: 12px
+  line-height: 1.5
+
+
+.input-lg,
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn 
+  height: 46px
+  padding: 10px 16px
+  font-size: 18px
+  line-height: 1.3333333
+  border-radius: 6px
+
+
+select.input-lg,
+.input-group-lg > select.form-control,
+.input-group-lg > select.input-group-addon,
+.input-group-lg > .input-group-btn > select.btn 
+  height: 46px
+  line-height: 46px
+
+
+textarea.input-lg,
+.input-group-lg > textarea.form-control,
+.input-group-lg > textarea.input-group-addon,
+.input-group-lg > .input-group-btn > textarea.btn,
+select[multiple].input-lg,
+.input-group-lg > select[multiple].form-control,
+.input-group-lg > select[multiple].input-group-addon,
+.input-group-lg > .input-group-btn > select[multiple].btn 
+  height: auto
+
+
+.form-group-lg .form-control 
+  height: 46px
+  padding: 10px 16px
+  font-size: 18px
+  line-height: 1.3333333
+  border-radius: 6px
+
+
+.form-group-lg select.form-control 
+  height: 46px
+  line-height: 46px
+
+
+.form-group-lg textarea.form-control,
+.form-group-lg select[multiple].form-control 
+  height: auto
+
+
+.form-group-lg .form-control-static 
+  height: 46px
+  min-height: 38px
+  padding: 11px 16px
+  font-size: 18px
+  line-height: 1.3333333
+
+
+.has-feedback 
+  position: relative
+
+
+.has-feedback .form-control 
+  padding-right: 42.5px
+
+
+.form-control-feedback 
+  position: absolute
+  top: 0
+  right: 0
+  z-index: 2
+  display: block
+  width: 34px
+  height: 34px
+  line-height: 34px
+  text-align: center
+  pointer-events: none
+
+
+.input-lg + .form-control-feedback,
+.input-group-lg > .form-control + .form-control-feedback,
+.input-group-lg > .input-group-addon + .form-control-feedback,
+.input-group-lg > .input-group-btn > .btn + .form-control-feedback,
+.input-group-lg + .form-control-feedback,
+.form-group-lg .form-control + .form-control-feedback 
+  width: 46px
+  height: 46px
+  line-height: 46px
+
+
+.input-sm + .form-control-feedback,
+.input-group-sm > .form-control + .form-control-feedback,
+.input-group-sm > .input-group-addon + .form-control-feedback,
+.input-group-sm > .input-group-btn > .btn + .form-control-feedback,
+.input-group-sm + .form-control-feedback,
+.form-group-sm .form-control + .form-control-feedback 
+  width: 30px
+  height: 30px
+  line-height: 30px
+
+
+.has-success .form-control 
+  border-color: #3c763d
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+
+.has-success .form-control:focus 
+  border-color: #2b542c
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168
+
+
+.has-warning .form-control 
+  border-color: #8a6d3b
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+
+.has-warning .form-control:focus 
+  border-color: #66512c
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b
+
+
+.has-warning .input-group-addon 
+  color: #8a6d3b
+  border-color: #8a6d3b
+  background-color: #fcf8e3
+
+
+.has-warning .form-control-feedback 
+  color: #8a6d3b
+
+
+.has-error .form-control 
+  border-color: #a94442
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+
+.has-error .form-control:focus 
+  border-color: #843534
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483
+
+
+.has-error .input-group-addon 
+  color: #a94442
+  border-color: #a94442
+  background-color: #f2dede
+
+
+.has-error .form-control-feedback 
+  color: #a94442
+
+
+.has-feedback label ~ .form-control-feedback 
+  top: 25px
+
+
+.has-feedback label.sr-only ~ .form-control-feedback 
+  top: 0
+
+@media (min-width: 768px) 
+  .form-inline .form-group
+    display: inline-block
+    margin-bottom: 0
+    vertical-align: middle
+  .form-inline .form-control
+    display: inline-block
+    width: auto
+    vertical-align: middle
+  .form-inline .form-control-static
+    display: inline-block
+  .form-inline .input-group
+    display: inline-table
+    vertical-align: middle
+  .form-inline .input-group .input-group-addon,
+  .form-inline .input-group .input-group-btn,
+  .form-inline .input-group .form-control
+    width: auto
+  .form-inline .input-group > .form-control
+    width: 100%
+  .form-inline .control-label
+    margin-bottom: 0
+    vertical-align: middle
+  .form-inline .radio,
+  .form-inline .checkbox
+    display: inline-block
+    margin-top: 0
+    margin-bottom: 0
+    vertical-align: middle
+  .form-inline .radio label,
+  .form-inline .checkbox label
+    padding-left: 0
+  .form-inline .radio input[type="radio"],
+  .form-inline .checkbox input[type="checkbox"]
+    position: relative
+    margin-left: 0
+  .form-inline .has-feedback .form-control-feedback
+    top: 0
+
+.input-group .form-control
+  position: relative
+  z-index: 2
+  float: left
+  width: 100%
+  margin-bottom: 0
+
+.input-group .form-control:focus
+  z-index: 3
+
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control 
+  display: table-cell
+
+.input-group-addon:not(:first-child):not(:last-child),
+.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child) 
+  border-radius: 0
