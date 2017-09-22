@@ -5,7 +5,9 @@
         <div class="signin_wrapper">
             <!-- logo -->
             <div class="logo">
-                <img src="{{ asset('images/logo-2.png') }}" alt="motionhub logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('images/logo-2.png') }}" alt="motionhub logo">
+                </a>
             </div>
 
             <!-- signin form -->

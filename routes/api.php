@@ -13,21 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
-Route::middleware('api')->get('/videos/hot', function (Request $request) {
-
-    $hotVideos = DB::table('videos')
-    ->select('id', 'name', 'link', 'image')
-    ->orderBy('watched', 'desc')
-    ->take($request->query('amount'))
-    ->get();
-
-    $videos = [
-        'hot' => $hotVideos
-    ];
-
-    return $videos;
-});
+Route::get('/videos/hot', 'VideoController@getHottestVideos')->middleware('api');
+Route::get('/videos/new', 'VideoController@getNewestVideos')->middleware('api');
+Route::get('/videos', 'VideoController@getVideos')->middleware('api');
+Route::patch('/video/watch', 'VideoController@updateWatched')->middleware('api');
+Route::get('/video', 'VideoController@searchVideo')->middleware('api');

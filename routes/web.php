@@ -17,3 +17,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('video', 'VideoController');
 Route::get('/vip', 'VideoController@vip')->name('vip');
 Route::get('/vip/{id}', 'VideoController@vipShow')->name('vip.show');
+
+Route::get('/video', 'VideoController@searchVideo')->name('video.search');

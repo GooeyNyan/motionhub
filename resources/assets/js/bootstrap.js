@@ -1,3 +1,7 @@
+let rootURL = document.head.querySelector('meta[name="root-url"]').content;
+rootURL = rootURL.endsWith('/') ? rootURL : rootURL + "/";
+
+window.apiRoot = `${rootURL}api/`;
 
 window._ = require('lodash');
 
@@ -10,7 +14,7 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
+    // require('bootstrap-sass');
 } catch (e) {}
 
 /**

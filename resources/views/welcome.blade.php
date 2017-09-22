@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('header-btn')
+
     @if(!\Auth::check())
         <div class="login-btn">
             <a href="{{ route('login') }}">登 录</a>
         </div>
     @else
         <div class="video-submit">
+            <a href="{{ route('video.create') }}">提交视频</a>
+        </div>
+        <div class="login-btn">
             <form action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
                 <button>登 出</button>
@@ -81,151 +85,12 @@
                 </div>
             </div>
             <div class="videos">
-                <div class="hot">
-                    <div class="header">
-                        <h2 class="title">热门视频</h2>
-                        <div class="pagination">
-                            <div class="prev">
-                                <img src="{{ asset('images/icon/icon-arrow-left.png') }}">
-                            </div>
-                            <div class="next">
-                                <img src="{{ asset('images/icon/icon-arrow-right.png') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="hero">
-                            <div class="video-item main">
-                                <div class="title">After Effects</div>
-                            </div>
-                        </div>
-                        <div class="other">
-                            <div class="videos-wrapper">
-                                <div class="video-item">
-                                    <div class="title">Cinema 4D</div>
-                                </div>
-                                <div class="video-item">
-                                    <div class="title">3D Max</div>
-                                </div>
-                                <div class="video-item">
-                                    <div class="title">Maya</div>
-                                </div>
-                                <div class="video-item">
-                                    <div class="title">Houdini</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="new">
-                    <div class="header">
-                        <h2 class="title">最新视频</h2>
-                        <div class="pagination">
-                            <div class="prev">
-                                <img src="{{ asset('images/icon/icon-arrow-left.png') }}">
-                            </div>
-                            <div class="next">
-                                <img src="{{ asset('images/icon/icon-arrow-right.png') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                    </div>
-                </div>
-                <div class="titles">
-                    <div class="header">
-                        <h2 class="title">TITLES设计</h2>
-                        <div class="pagination">
-                            <div class="prev">
-                                <img src="{{ asset('images/icon/icon-arrow-left.png') }}">
-                            </div>
-                            <div class="next">
-                                <img src="{{ asset('images/icon/icon-arrow-right.png') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                    </div>
-                </div>
-                <div class="showreels">
-                    <div class="header">
-                        <h2 class="title">SHOWREELS</h2>
-                        <div class="pagination">
-                            <div class="prev">
-                                <img src="{{ asset('images/icon/icon-arrow-left.png') }}">
-                            </div>
-                            <div class="next">
-                                <img src="{{ asset('images/icon/icon-arrow-right.png') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                        <div class="video-item"></div>
-                    </div>
-                </div>
+
+                <hot-video-wrapper type="hot" amount="5"></hot-video-wrapper>
+                <video-wrapper type="new" amount="16"></video-wrapper>
+                <video-wrapper type="titles" amount="16"></video-wrapper>
+                <video-wrapper type="showreels" amount="16"></video-wrapper>
+
             </div>
             <div class="subscription-wrapper">
                 <div class="subscription">
@@ -248,60 +113,6 @@
             </div>
         </div>
 
-        <div class="video-container">
-            <div class="video-watching"></div>
-        </div>
+        <video-player></video-player>
     </main>
-@endsection
-
-@section('script')
-    <script>
-        let mockData;
-
-        function init() {
-            let hotVideoAPI = 'http://motionhub.dev/api/videos/hot?amount=7';
-            $.getJSON(hotVideoAPI, (data) => {
-                mockData = data;
-                let videoTags = ['hot', 'new', 'titles', 'showreels'];
-                for (let tag of videoTags) {
-                    let videoList = document.getElementsByClassName(tag)[0];
-                    let videos = videoList.getElementsByClassName('video-item');
-                    let i = 0;
-                    let mockTag = "hot";
-
-                    for (let video of videos) {
-                        let mockIndex = i < mockData[mockTag].length ? i : mockData[mockTag].length - 1;
-                        let img = document.createElement('img');
-                        img.src = mockData[mockTag][mockIndex].image;
-                        video.onclick = videoWatch;
-                        video.dataset.index = i++;
-                        video.dataset.tag = tag;
-                        video.appendChild(img);
-                    }
-                }
-            });
-        }
-
-        function videoWatch() {
-            console.log(this.dataset.index);
-
-            let videoContainer = document.getElementsByClassName('video-container')[0];
-            let videoWatching = videoContainer.getElementsByClassName('video-watching')[0];
-            let videoTag = this.dataset.tag;
-            let videoIndex = this.dataset.index;
-            videoTag = 'hot';
-            videoIndex = videoIndex >= mockData[videoTag].length ? mockData[videoTag].length - 1 : videoIndex;
-
-            videoContainer.style.zIndex = 100;
-
-            videoWatching.innerHTML = mockData[videoTag][videoIndex].link;
-            console.log(mockData[videoTag][videoIndex].title);
-            videoContainer.onclick = function () {
-                videoWatching.innerHTML = '';
-                videoContainer.style.zIndex = -100;
-            }
-        }
-
-        window.onload = init();
-    </script>
 @endsection

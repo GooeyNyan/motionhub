@@ -7,6 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- APP_URL --}}
+    <meta name="root-url" content="{{ env("APP_URL") }}">
 
     <title>{{ config('app.name', 'motionhub') }}</title>
 

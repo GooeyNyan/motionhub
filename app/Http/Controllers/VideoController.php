@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVideoRequest;
 use App\Repositories\VideoRepository;
+use App\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class VideoController
@@ -20,7 +22,7 @@ class VideoController extends Controller
      */
     public function __construct(VideoRepository $videoRepository)
     {
-        $this->middleware('auth')->except('vip', 'vipShow');
+        $this->middleware('auth')->only('store', 'update', 'edit', 'destroy');
         $this->videoRepository = $videoRepository;
     }
 
@@ -44,7 +46,7 @@ class VideoController extends Controller
         $data = [
             'name' => $request->get('name'),
             'link' => $link,
-            '$image' => $image,
+            'image' => $image,
             'desc' => $request->get('desc')
         ];
 
@@ -52,6 +54,14 @@ class VideoController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->query('video');
+
+        return view('videos.search', compact('query'));
+    }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -68,5 +78,69 @@ class VideoController extends Controller
     public function vipShow($id)
     {
         return view('vip.detail');
+    }
+
+
+
+//    api part
+
+    /**
+     * return hottest videos
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function getHottestVideos(Request $request)
+    {
+        return DB::table('videos')
+            ->select('id', 'name', 'link', 'image')
+            ->orderBy('watched', 'desc')
+            ->paginate($request->query('amount'));
+    }
+
+    /**
+     * return newest videos
+     *
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Support\Collection|static[]
+     */
+    public function getNewestVideos(Request $request)
+    {
+        return Video::select('id', 'name', 'link', 'image')
+            ->latest('created_at')
+            ->paginate($request->query('amount'));
+    }
+
+    /**
+     * return videos of type
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getVideos(Request $request)
+    {
+        return DB::table('videos')
+            ->select('id', 'name', 'link', 'image')
+            ->orderBy('watched', 'desc')
+            ->paginate($request->query('amount'));
+    }
+
+    public function updateWatched(Request $request)
+    {
+        $video = Video::find($request->get('id'));
+        $video->watched++;
+        $video->save();
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchVideo(Request $request)
+    {
+        return Video::where('name', 'like', '%' . $request->query('video') . '%')
+            ->select('id', 'name', 'image', 'desc')
+            ->orderBy('name')
+            ->paginate(10);
     }
 }
