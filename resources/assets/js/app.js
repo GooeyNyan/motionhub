@@ -20,6 +20,7 @@ Vue.component('videoPlayer', require('./components/VideoPlayer.vue'));
 Vue.component('videoWrapper', require('./components/VideoWrapper.vue'));
 Vue.component('hotVideoWrapper', require('./components/HotVideoWrapper.vue'));
 Vue.component('searchWrapper', require('./components/SearchWrapper.vue'));
+Vue.component('subMenu', require('./components/SubMenu.vue'));
 
 const app = new Vue({
     el: '#app'

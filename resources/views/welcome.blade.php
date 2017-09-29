@@ -1,15 +1,23 @@
 @extends('layouts.app')
 
 @section('header-btn')
-
     @if(!\Auth::check())
         <div class="login-btn">
             <a href="{{ route('login') }}">登 录</a>
         </div>
     @else
-        <div class="video-submit">
-            <a href="{{ route('video.create') }}">提交视频</a>
-        </div>
+        @if(Auth::user()->isAdmin())
+            <div class="share-overview">
+                <a href="{{ route('share.index') }}">分享总览</a>
+            </div>
+            <div class="video-submit">
+                <a href="{{ route('video.create') }}">提交视频</a>
+            </div>
+        @else
+            <div class="video-submit">
+                <a href="{{ route('share.create') }}">分享视频</a>
+            </div>
+        @endif
         <div class="login-btn">
             <form action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
@@ -24,7 +32,7 @@
     <main id="index">
         <div class="navbar">
             <div class="nav-item index"><a href="{{ route('home') }}">首页</a></div>
-            <div class="nav-item categories">分类<img src="{{ asset('images/icon/icon-angle.png') }}" class="angle"></div>
+            <sub-menu :categories="{{ $categories }}"></sub-menu>
             <div class="nav-item vip"><a href="{{ route('vip') }}">会员视频</a></div>
         </div>
         <div class="container-fluid">

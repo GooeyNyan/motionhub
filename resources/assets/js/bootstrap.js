@@ -1,6 +1,7 @@
 let rootURL = document.head.querySelector('meta[name="root-url"]').content;
 rootURL = rootURL.endsWith('/') ? rootURL : rootURL + "/";
 
+window.rootURL = rootURL;
 window.apiRoot = `${rootURL}api/`;
 
 window._ = require('lodash');
@@ -16,6 +17,7 @@ try {
 
     // require('bootstrap-sass');
 } catch (e) {}
+import './select2.min'
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

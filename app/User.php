@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Video::class)->withTimestamps();
     }
+
+    public function isAdmin()
+    {
+        return $this->is_admin === 1;
+    }
 }

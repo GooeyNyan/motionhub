@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\StoreVideoRequest;
 use App\Repositories\VideoRepository;
+use App\Tag;
 use App\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -14,6 +17,9 @@ use Illuminate\Support\Facades\DB;
  */
 class VideoController extends Controller
 {
+    /**
+     * @var VideoRepository
+     */
     protected $videoRepository;
 
     /**
@@ -27,11 +33,19 @@ class VideoController extends Controller
     }
 
     /**
+     *
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('videos.create');
+        if (!Auth::user()->isAdmin()) {
+            return redirect()->route('home');
+        }
+
+        $categories = Category::select('id', 'name')->get();
+
+        return view('videos.create', compact('categories'));
     }
 
     /**
@@ -40,8 +54,13 @@ class VideoController extends Controller
      */
     public function store(StoreVideoRequest $request)
     {
+        if (!Auth::user()->isAdmin()) {
+            return redirect()->route('home');
+        }
+
         $link = $this->videoRepository->normalizeVideoUrl($request->get('link'));
         $image = $this->videoRepository->normalizeImageUrl($request->get('image'));
+        $tags = $this->videoRepository->normalizeTag($request->get('tags'));
 
         $data = [
             'name' => $request->get('name'),
@@ -50,11 +69,15 @@ class VideoController extends Controller
             'desc' => $request->get('desc')
         ];
 
-        $this->videoRepository->createVideo($data);
+        $this->videoRepository->createVideo($data, $tags);
 
         return redirect()->route('home');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $query = $request->query('video');
@@ -79,8 +102,6 @@ class VideoController extends Controller
     {
         return view('vip.detail');
     }
-
-
 
 //    api part
 
@@ -125,6 +146,9 @@ class VideoController extends Controller
             ->paginate($request->query('amount'));
     }
 
+    /**
+     * @param Request $request
+     */
     public function updateWatched(Request $request)
     {
         $video = Video::find($request->get('id'));
@@ -136,11 +160,56 @@ class VideoController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function searchVideo(Request $request)
+    public function searchVideoByName(Request $request)
     {
-        return Video::where('name', 'like', '%' . $request->query('video') . '%')
+        return Video::where('name', 'like', '%' . $request->query('q') . '%')
             ->select('id', 'name', 'image', 'desc')
             ->orderBy('name')
             ->paginate(10);
+
+        $searchByTag = Tag::where('name', 'like', '%' . $request->query('q') . '%')
+            ->first();
+
+        if (!!$searchByTag) {
+            $searchByTag = $searchByTag->videos()
+                ->select('video_id', 'name', 'image', 'desc')
+//                ->get();
+                ->paginate(10);
+            $videos = compact('searchByName', 'searchByTag');
+        } else {
+            $videos = $searchByName;
+        }
+        return $videos;
+    }
+
+    /**
+     * @param Request $request
+     * @return Tag|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Model
+     */
+    public function searchVideoByTag(Request $request)
+    {
+        $searchByTag = Tag::where('name', 'like', '%' . $request->query('q') . '%')
+            ->first();
+
+        if (!!$searchByTag) {
+            $searchByTag = $searchByTag->videos()->paginate(10);
+        }
+
+        return $searchByTag;
+    }
+
+    /**
+     * get relevant tag of the video
+     *
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getTags(Request $request)
+    {
+        $tags = Tag::select(['id', 'name'])
+            ->where('name', 'like', '%' . $request->query('tag') . "%")
+            ->get();
+
+        return $tags;
     }
 }

@@ -14,8 +14,8 @@ Auth::routes();
 Route::get('/email/verify/{token}', 'EmailController@verify')->name('email.verify');
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/#{category}', 'HomeController@index')->name('category');
 Route::resource('video', 'VideoController');
+Route::resource('share', 'ShareController');
 Route::get('/vip', 'VideoController@vip')->name('vip');
 Route::get('/vip/{id}', 'VideoController@vipShow')->name('vip.show');
-
-Route::get('/video', 'VideoController@searchVideo')->name('video.search');

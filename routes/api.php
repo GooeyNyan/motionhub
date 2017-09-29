@@ -21,4 +21,7 @@ Route::get('/videos/hot', 'VideoController@getHottestVideos')->middleware('api')
 Route::get('/videos/new', 'VideoController@getNewestVideos')->middleware('api');
 Route::get('/videos', 'VideoController@getVideos')->middleware('api');
 Route::patch('/video/watch', 'VideoController@updateWatched')->middleware('api');
-Route::get('/video', 'VideoController@searchVideo')->middleware('api');
+Route::get('/video/name', 'VideoController@searchVideoByName')->middleware('api');
+Route::get('/video/tag', 'VideoController@searchVideoByTag')->middleware('api');
+Route::get('/tags', 'VideoController@getTags')->middleware('api');
+Route::get('/share', 'ShareController@getShares')->middleware('api');

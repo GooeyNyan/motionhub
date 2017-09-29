@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="video-submit-container">
-        <div class="video-submit-wrapper">
+    <div class="video-share-container">
+        <div class="video-share-wrapper">
             <!-- logo -->
             <div class="logo">
                 <a href="{{ route('home') }}">
@@ -12,7 +12,7 @@
 
             <!-- create form -->
             <div class="form-wrapper">
-                <form action="{{ route('video.store') }}" method="POST">
+                <form action="{{ route('share.store') }}" method="POST">
                     {{ csrf_field() }}
 
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
@@ -35,40 +35,16 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label for="category">分类</label>
-                        <select class="js-example-basic-single" name="category" id="category">
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- tags --}}
-                    <div class="form-group">
-                        <label for="tag">标签</label>
-                        <select name="tags[]" class="placeholder-multiple form-control" multiple="multiple"
-                                id="tag"></select>
-                    </div>
-
-                    <!-- 上传图片容器 -->
-                    <div class="form-group">
-                        <label for="image">图片</label>
-                        <script id="editor1" name="image" type="text/plain">
-                            {!! old('image') !!}
-                        </script>
-                    </div>
-
                     <!-- 编辑器容器 -->
                     <div class="form-group">
-                        <label for="desc">描述</label>
+                        <label for="desc">推荐理由</label>
                         <script id="editor2" name="desc" type="text/plain">
                             {!! old('desc') !!}
                         </script>
                     </div>
 
                     <div class="button-wrapper">
-                        <button class="video-submit-btn">提交视频</button>
+                        <button class="video-submit-btn">推荐视频</button>
                     </div>
                 </form>
             </div>

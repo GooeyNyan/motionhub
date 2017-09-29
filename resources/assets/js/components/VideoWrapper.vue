@@ -27,7 +27,7 @@
         data: () => ({
             videoList: [],
             page: 1,
-            lastPage: null
+            lastPage: null,
         }),
         methods: {
             getNewestVideos(amount = 16) {
@@ -90,7 +90,7 @@
                         this.getVideos(this.amount);
                         break;
                 }
-            }
+            },
         },
         created() {
             this.switchVideoRequest();

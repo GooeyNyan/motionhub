@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $categories = Category::select('id', 'name')->get();
+
+        return view('welcome', compact('categories'));
     }
 }
