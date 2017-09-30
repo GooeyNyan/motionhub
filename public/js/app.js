@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(7);
 var isBuffer = __webpack_require__(21);
 
 /*global toString:true*/
@@ -512,6 +512,16 @@ module.exports = Component.exports
 
 /***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a());
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -534,10 +544,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   }
   return adapter;
 }
@@ -611,7 +621,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -638,7 +648,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10898,7 +10908,7 @@ return jQuery;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10916,7 +10926,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10927,7 +10937,7 @@ var settle = __webpack_require__(25);
 var buildURL = __webpack_require__(27);
 var parseHeaders = __webpack_require__(28);
 var isURLSameOrigin = __webpack_require__(29);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(30);
 
 module.exports = function xhrAdapter(config) {
@@ -11103,7 +11113,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11128,7 +11138,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11140,7 +11150,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11166,7 +11176,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21258,24 +21268,14 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a());
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(56);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
@@ -21291,7 +21291,7 @@ module.exports = __webpack_require__(56);
 
 __webpack_require__(15);
 
-window.Vue = __webpack_require__(11);
+window.Vue = __webpack_require__(12);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21301,10 +21301,11 @@ window.Vue = __webpack_require__(11);
 
 Vue.component('videoItem', __webpack_require__(2));
 Vue.component('videoPlayer', __webpack_require__(41));
-Vue.component('videoWrapper', __webpack_require__(44));
-Vue.component('hotVideoWrapper', __webpack_require__(47));
-Vue.component('searchWrapper', __webpack_require__(50));
-Vue.component('subMenu', __webpack_require__(53));
+Vue.component('videos', __webpack_require__(44));
+Vue.component('hotVideos', __webpack_require__(47));
+Vue.component('categoryVideos', __webpack_require__(50));
+Vue.component('search', __webpack_require__(53));
+Vue.component('subMenu', __webpack_require__(56));
 
 var app = new Vue({
   el: '#app'
@@ -21333,7 +21334,7 @@ window._ = __webpack_require__(16);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(5);
+  window.$ = window.jQuery = __webpack_require__(6);
 
   // require('bootstrap-sass');
 } catch (e) {}
@@ -38468,7 +38469,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(17)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17)(module)))
 
 /***/ }),
 /* 17 */
@@ -38505,7 +38506,7 @@ module.exports = function(module) {
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*! Select2 4.0.3 | https://github.com/select2/select2/blob/master/LICENSE.md */!function (a) {
-   true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5)], __WEBPACK_AMD_DEFINE_FACTORY__ = (a),
+   true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(6)], __WEBPACK_AMD_DEFINE_FACTORY__ = (a),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : a("object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? require("jquery") : jQuery);
@@ -39637,9 +39638,9 @@ module.exports = __webpack_require__(20);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(7);
 var Axios = __webpack_require__(22);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(4);
 
 /**
  * Create an instance of Axios
@@ -39672,9 +39673,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
+axios.Cancel = __webpack_require__(11);
 axios.CancelToken = __webpack_require__(37);
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(10);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -39722,7 +39723,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(4);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(32);
 var dispatchRequest = __webpack_require__(33);
@@ -40024,7 +40025,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -40443,8 +40444,8 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(34);
-var isCancel = __webpack_require__(9);
-var defaults = __webpack_require__(3);
+var isCancel = __webpack_require__(10);
+var defaults = __webpack_require__(4);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -40596,7 +40597,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(11);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -40693,7 +40694,7 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventHub__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventHub__ = __webpack_require__(3);
 //
 //
 //
@@ -40790,7 +40791,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventHub__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventHub__ = __webpack_require__(3);
 //
 //
 //
@@ -40870,9 +40871,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\VideoWrapper.vue"
+Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\Videos.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] VideoWrapper.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Videos.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -40881,9 +40882,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12954f82", Component.options)
+    hotAPI.createRecord("data-v-0a7f5982", Component.options)
   } else {
-    hotAPI.reload("data-v-12954f82", Component.options)
+    hotAPI.reload("data-v-0a7f5982", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -40901,6 +40902,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VideoItem_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__eventHub__ = __webpack_require__(3);
 //
 //
 //
@@ -40921,17 +40923,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "videoWrapper",
+    name: "videos",
     props: ['type', 'amount'],
     data: function data() {
         return {
             videoList: [],
             page: 1,
-            lastPage: null
+            lastPage: null,
+            show: true
         };
     },
     methods: {
@@ -40999,10 +41003,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.getVideos(this.amount);
                     break;
             }
+        },
+        urlWithHash: function urlWithHash() {
+            var url = location.href;
+            var withHash = url.includes('#');
+            this.show = !withHash;
         }
     },
     created: function created() {
+        var _this3 = this;
+
         this.switchVideoRequest();
+        this.show = !location.href.includes('#');
+        __WEBPACK_IMPORTED_MODULE_1__eventHub__["a" /* default */].$on('hashShow', function (data) {
+            _this3.show = data.show;
+        });
     },
 
     components: {
@@ -41015,7 +41030,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.show) ? _c('div', {
     class: _vm.type
   }, [_c('div', {
     staticClass: "header"
@@ -41052,13 +41067,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "video": item
       }
     })
-  }))])
+  }))]) : _vm._e()
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-12954f82", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-0a7f5982", module.exports)
   }
 }
 
@@ -41079,9 +41094,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\HotVideoWrapper.vue"
+Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\HotVideos.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] HotVideoWrapper.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] HotVideos.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -41090,9 +41105,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5823542e", Component.options)
+    hotAPI.createRecord("data-v-1599ae6e", Component.options)
   } else {
-    hotAPI.reload("data-v-5823542e", Component.options)
+    hotAPI.reload("data-v-1599ae6e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41110,6 +41125,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VideoItem_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__eventHub__ = __webpack_require__(3);
 //
 //
 //
@@ -41137,18 +41153,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "hotVideoWrapper",
+    name: "hotVideos",
     props: ['type', 'amount'],
     data: function data() {
         return {
             hero: [],
             other: [],
             page: 1,
-            lastPage: null
+            lastPage: null,
+            show: {
+                type: Boolean
+            }
         };
     },
     methods: {
@@ -41184,10 +41204,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.page++;
             this.getHottestVideos();
+        },
+        urlWithHash: function urlWithHash() {
+            var url = location.href;
+            var withHash = url.includes('#');
+            var id = parseInt(url.split('#')[1]);
+            this.show = !withHash;
+            __WEBPACK_IMPORTED_MODULE_1__eventHub__["a" /* default */].$emit('hashShow', {
+                id: id,
+                show: this.show
+            });
         }
     },
     created: function created() {
         this.getHottestVideos(this.amount);
+        this.urlWithHash();
+        window.onhashchange = this.urlWithHash;
     },
 
     components: {
@@ -41200,7 +41232,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.show) ? _c('div', {
     staticClass: "hot"
   }, [_c('div', {
     staticClass: "header"
@@ -41248,13 +41280,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "video": item
       }
     })
-  }))])])])
+  }))])])]) : _vm._e()
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5823542e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-1599ae6e", module.exports)
   }
 }
 
@@ -41275,9 +41307,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\SearchWrapper.vue"
+Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\CategoryVideos.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] SearchWrapper.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] CategoryVideos.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -41286,9 +41318,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2f1b86b4", Component.options)
+    hotAPI.createRecord("data-v-4f7ef046", Component.options)
   } else {
-    hotAPI.reload("data-v-2f1b86b4", Component.options)
+    hotAPI.reload("data-v-4f7ef046", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41300,6 +41332,236 @@ module.exports = Component.exports
 
 /***/ }),
 /* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VideoItem_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__eventHub__ = __webpack_require__(3);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "hashVideos",
+    data: function data() {
+        return {
+            videoList: [],
+            page: 1,
+            lastPage: null,
+            typeId: null,
+            type: undefined,
+            show: true
+        };
+    },
+    methods: {
+        getVideos: function getVideos() {
+            var _this = this;
+
+            axios.get(apiRoot + 'videos/category', {
+                params: {
+                    id: this.typeId,
+                    page: this.page
+                }
+            }).then(function (response) {
+                var videoData = response.data.videos;
+                _this.type = response.data.type;
+
+                if (_this.lastPage === null) {
+                    _this.lastPage = videoData.last_page;
+                }
+
+                _this.videoList = videoData.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        prevPage: function prevPage() {
+            this.page === 1 ? alert('欸？到头啦…') : this.page--;
+            this.getVideos();
+        },
+        nextPage: function nextPage() {
+            if (this.lastPage !== null && this.page === this.lastPage) {
+                alert('没有更多视频了呢');
+                return;
+            }
+
+            this.page++;
+            this.getVideos();
+        }
+    },
+    created: function created() {
+        var _this2 = this;
+
+        var url = location.href;
+        this.id = url.split('#')[1];
+        __WEBPACK_IMPORTED_MODULE_1__eventHub__["a" /* default */].$on('hashShow', function (data) {
+            _this2.typeId = data.id;
+            _this2.show = !data.show;
+            if (_this2.show) {
+                _this2.getVideos();
+            }
+        });
+    },
+
+    components: {
+        videoItem: __WEBPACK_IMPORTED_MODULE_0__VideoItem_vue___default.a
+    }
+});
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.show) ? _c('div', {
+    class: _vm.type
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('h2', {
+    staticClass: "title"
+  }, [_vm._v(_vm._s(_vm.type.toUpperCase()))]), _vm._v(" "), _c('div', {
+    staticClass: "pagination"
+  }, [_c('div', {
+    staticClass: "prev",
+    on: {
+      "click": _vm.prevPage
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/icon/icon-arrow-left.png",
+      "alt": "arrow left"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "next",
+    on: {
+      "click": _vm.nextPage
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/icon/icon-arrow-right.png",
+      "alt": "arrow right"
+    }
+  })])])]), _vm._v(" "), (_vm.videoList.length > 0) ? _c('div', {
+    ref: "videosWrapper",
+    staticClass: "content"
+  }, _vm._l((_vm.videoList), function(item, index) {
+    return _c('video-item', {
+      key: index,
+      attrs: {
+        "video": item
+      }
+    })
+  })) : _vm._e(), _vm._v(" "), (_vm.videoList.length >= 12) ? _c('div', {
+    staticClass: "header"
+  }, [_c('h2', {
+    staticClass: "title"
+  }, [_vm._v(_vm._s(_vm.type.toUpperCase()))]), _vm._v(" "), _c('div', {
+    staticClass: "pagination"
+  }, [_c('div', {
+    staticClass: "prev",
+    on: {
+      "click": _vm.prevPage
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/icon/icon-arrow-left.png",
+      "alt": "arrow left"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "next",
+    on: {
+      "click": _vm.nextPage
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/icon/icon-arrow-right.png",
+      "alt": "arrow right"
+    }
+  })])])]) : _vm._e()]) : _vm._e()
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4f7ef046", module.exports)
+  }
+}
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(54),
+  /* template */
+  __webpack_require__(55),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\Users\\Sanjw\\Code\\motionhub\\resources\\assets\\js\\components\\Search.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2fca958f", Component.options)
+  } else {
+    hotAPI.reload("data-v-2fca958f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41329,7 +41591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "videoWrapper",
+    name: "searchVideos",
     props: ['query'],
     data: function data() {
         return {
@@ -41376,7 +41638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -41419,20 +41681,20 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2f1b86b4", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2fca958f", module.exports)
   }
 }
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(54),
+  __webpack_require__(57),
   /* template */
-  __webpack_require__(55),
+  __webpack_require__(58),
   /* styles */
   null,
   /* scopeId */
@@ -41464,7 +41726,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41497,7 +41759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -41553,7 +41815,7 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

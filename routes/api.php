@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 
 Route::get('/videos/hot', 'VideoController@getHottestVideos')->middleware('api');
 Route::get('/videos/new', 'VideoController@getNewestVideos')->middleware('api');
+Route::get('/videos/category', 'VideoController@getVideosOfACategory')->middleware('api');
 Route::get('/videos', 'VideoController@getVideos')->middleware('api');
 Route::patch('/video/watch', 'VideoController@updateWatched')->middleware('api');
 Route::get('/video/name', 'VideoController@searchVideoByName')->middleware('api');

@@ -94,10 +94,11 @@
             </div>
             <div class="videos">
 
-                <hot-video-wrapper type="hot" amount="5"></hot-video-wrapper>
-                <video-wrapper type="new" amount="16"></video-wrapper>
-                <video-wrapper type="titles" amount="16"></video-wrapper>
-                <video-wrapper type="showreels" amount="16"></video-wrapper>
+                <category-videos></category-videos>
+                <hot-videos type="hot" amount="5"></hot-videos>
+                <videos type="new" amount="16"></videos>
+                <videos type="titles" amount="16"></videos>
+                <videos type="showreels" amount="16"></videos>
 
             </div>
             <div class="subscription-wrapper">

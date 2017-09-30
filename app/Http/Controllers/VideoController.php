@@ -146,6 +146,18 @@ class VideoController extends Controller
             ->paginate($request->query('amount'));
     }
 
+    public function getVideosOfACategory(Request $request)
+    {
+        $type_id = $request->query('id');
+        $type = Category::where('id', $type_id)->first()->name;
+        $videos = Video::where('category_id', $type_id)
+            ->select('id', 'name', 'link', 'image')
+            ->orderBy('watched', 'desc')
+            ->paginate(48);
+        $data = compact('type', 'videos');
+        return $data;
+    }
+
     /**
      * @param Request $request
      */

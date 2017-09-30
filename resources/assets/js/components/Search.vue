@@ -1,7 +1,6 @@
 <template>
-    <div class="hot">
+    <div>
         <div class="header">
-            <h2 class="title">热门视频</h2>
             <div class="pagination">
                 <div class="prev" @click="prevPage">
                     <img src="/images/icon/icon-arrow-left.png" alt="arrow left">
@@ -12,15 +11,8 @@
             </div>
         </div>
         <div class="content">
-            <div class="hero">
-                <video-item class="main" :video="hero"></video-item>
-            </div>
-            <div class="other">
-                <div class="videos-wrapper">
-                    <video-item v-for="(item, index) in other" :key="index"
-                                :video="item"></video-item>
-                </div>
-            </div>
+            <video-item v-for="(item, index) in videoList" :key="index"
+                        :video="item"></video-item>
         </div>
     </div>
 </template>
@@ -29,28 +21,22 @@
     import videoItem from './VideoItem.vue'
 
     export default {
-        name: "hotVideoWrapper",
-        props: ['type', 'amount'],
+        name: "searchVideos",
+        props: ['query'],
         data: () => ({
-            hero: [],
-            other: [],
+            videoList: [],
             page: 1,
             lastPage: null
         }),
         methods: {
-            getHottestVideos(amount = 5) {
-                axios.get(`${apiRoot}videos/hot`, {
-                    params: {
-                        amount: amount,
-                        page: this.page
-                    }
-                })
+            searchVideo() {
+                axios.get(`${apiRoot}video`, {params: {video: this.query}})
                     .then(response => {
                         if (this.lastPage === null) {
                             this.lastPage = response.data.last_page;
                         }
-                        this.hero = response.data.data[0];
-                        this.other = response.data.data.slice(1);
+
+                        this.videoList = response.data.data;
                     })
                     .catch(error => {
                         console.log(error);
@@ -58,20 +44,20 @@
             },
             prevPage() {
                 this.page === 1 ? alert('欸？到头啦…') : this.page--;
-                this.getHottestVideos();
+                this.searchVideo();
             },
             nextPage() {
                 if (this.lastPage !== null && this.page === this.lastPage) {
                     alert('没有更多视频了呢');
-                    return ;
+                    return;
                 }
 
                 this.page++;
-                this.getHottestVideos();
-            }
+                this.searchVideo();
+            },
         },
         created() {
-            this.getHottestVideos(this.amount);
+            this.searchVideo();
         },
         components: {
             videoItem

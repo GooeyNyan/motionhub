@@ -17,9 +17,10 @@ window.Vue = require('vue');
 
 Vue.component('videoItem', require('./components/VideoItem.vue'));
 Vue.component('videoPlayer', require('./components/VideoPlayer.vue'));
-Vue.component('videoWrapper', require('./components/VideoWrapper.vue'));
-Vue.component('hotVideoWrapper', require('./components/HotVideoWrapper.vue'));
-Vue.component('searchWrapper', require('./components/SearchWrapper.vue'));
+Vue.component('videos', require('./components/Videos.vue'));
+Vue.component('hotVideos', require('./components/HotVideos.vue'));
+Vue.component('categoryVideos', require('./components/CategoryVideos.vue'));
+Vue.component('search', require('./components/Search.vue'));
 Vue.component('subMenu', require('./components/SubMenu.vue'));
 
 const app = new Vue({
