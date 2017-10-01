@@ -12,4 +12,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Video::class, 'video_tag')->withTimestamps();
     }
+
+    public function vipVideos()
+    {
+        return $this->belongsToMany(vipVideo::class, 'vip_video_tag')->withTimestamps();
+    }
 }

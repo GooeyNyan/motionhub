@@ -5,10 +5,9 @@
         </a>
     </div>
     <div class="search-wrapper">
-        <form action="#" method="GET" class="search-form">
-            <input name="video" class="video-search" placeholder="搜索视频">
-            <img src="{{ asset('images/icon/icon-search.png') }}" class="search-submit">
-        </form>
+
+        @yield('search-form')
+
         <span class="desc">例如：Photoshop, After Effects, Cinema 4D</span>
     </div>
     @yield('header-btn')

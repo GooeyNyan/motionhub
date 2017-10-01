@@ -12,6 +12,8 @@
 
     <title>{{ config('app.name', 'motionhub') }}</title>
 
+    <meta name="api-token" content="{{ Auth::check() ? "Bearer ".Auth::user()->api_token : ""}}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('images/logo-icon.png') }}" type="image/x-icon"/>

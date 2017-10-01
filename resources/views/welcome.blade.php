@@ -2,23 +2,23 @@
 
 @section('header-btn')
     @if(!\Auth::check())
-        <div class="login-btn">
+        <div class="header-btn">
             <a href="{{ route('login') }}">登 录</a>
         </div>
     @else
         @if(Auth::user()->isAdmin())
-            <div class="share-overview">
+            <div class="header-btn" style="right: 292px;">
                 <a href="{{ route('share.index') }}">分享总览</a>
             </div>
-            <div class="video-submit">
+            <div class="header-btn" style="right: 160px;">
                 <a href="{{ route('video.create') }}">提交视频</a>
             </div>
         @else
-            <div class="video-submit">
+            <div class="header-btn" style="right: 160px;">
                 <a href="{{ route('share.create') }}">分享视频</a>
             </div>
         @endif
-        <div class="login-btn">
+        <div class="header-btn">
             <form action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
                 <button>登 出</button>
@@ -27,13 +27,20 @@
     @endif
 @stop
 
+@section('search-form')
+    <form action="{{ route('search') }}" method="GET" class="search-form">
+        <input name="q" class="video-search" placeholder="搜索视频">
+        <img src="{{ asset('images/icon/icon-search.png') }}" class="search-submit">
+    </form>
+@endsection
+
 @section('content')
     @include('layouts._header')
     <main id="index">
         <div class="navbar">
             <div class="nav-item index"><a href="{{ route('home') }}">首页</a></div>
             <sub-menu :categories="{{ $categories }}"></sub-menu>
-            <div class="nav-item vip"><a href="{{ route('vip') }}">会员视频</a></div>
+            <div class="nav-item vip"><a href="{{ route('vip.index') }}">会员视频</a></div>
         </div>
         <div class="container-fluid">
             <div class="share">

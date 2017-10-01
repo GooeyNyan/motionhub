@@ -1,3 +1,7 @@
+import './select2.min'
+
+window.Swiper = require('./swiper.min');
+
 let rootURL = document.head.querySelector('meta[name="root-url"]').content;
 rootURL = rootURL.endsWith('/') ? rootURL : rootURL + "/";
 
@@ -16,8 +20,9 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     // require('bootstrap-sass');
-} catch (e) {}
-import './select2.min'
+} catch (e) {
+}
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -35,10 +40,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+let apiToken = document.head.querySelector('meta[name="api-token"]');
 
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+if (csrfToken) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;
+    window.axios.defaults.headers.common['Authorization'] = apiToken.content;
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }

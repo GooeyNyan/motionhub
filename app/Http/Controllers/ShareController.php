@@ -14,13 +14,13 @@ class ShareController extends Controller
     /**
      * @var VideoRepository
      */
-    protected $shareRepository;
+    protected $repository;
 
 
     public function __construct(ShareRepository $shareRepository)
     {
         $this->middleware('auth')->only('store');
-        $this->shareRepository = $shareRepository;
+        $this->repository = $shareRepository;
     }
 
     /**
@@ -30,7 +30,9 @@ class ShareController extends Controller
      */
     public function index()
     {
-        $this->isAdmin();
+        if (!Auth::user()->isAdmin()) {
+            return redirect()->route('home');
+        }
 
         $shares = Share::select(['name', 'link', 'desc', 'user_name'])->get();
 
@@ -63,23 +65,8 @@ class ShareController extends Controller
             'user_name' => Auth::user()->name
         ];
 
-        $this->shareRepository->videoShare($data);
+        $this->repository->videoShare($data);
 
         return redirect()->route('home');
-    }
-
-
-    // api part
-    public function getShares(Request $request)
-    {
-        return Share::select('id', 'name', 'link', 'user_name')
-            ->paginate($request->query('amount'));
-    }
-
-    private function isAdmin()
-    {
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->route('home');
-        }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="show" :class="type">
+    <div :class="type">
         <div class="header">
             <h2 class="title">{{ type.toUpperCase() }}</h2>
             <div class="pagination">
@@ -34,7 +34,7 @@
     import eventHub from '../eventHub'
 
     export default {
-        name: "hashVideos",
+        name: "categoryVideos",
         data: () => ({
             videoList: [],
             page: 1,

@@ -51,7 +51,7 @@ class VideoRepository
             if (is_numeric($tag)) {
                 return (int)$tag;
             }
-            $newTag = Tag::create(['name' => $tag]);
+            $newTag = Tag::firstOrCreate(['name' => $tag]);
 
             return $newTag->id;
         })->toArray();

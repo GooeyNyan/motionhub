@@ -1,7 +1,7 @@
 <template>
-    <div :class="type">
+    <div class="vip-videos">
         <div class="header">
-            <h2 class="title">Query By {{ type.toUpperCase() }}</h2>
+            <h2 class="title">会员视频</h2>
             <div class="pagination">
                 <div class="prev" @click="prevPage">
                     <img src="/images/icon/icon-arrow-left.png" alt="arrow left">
@@ -11,27 +11,31 @@
                 </div>
             </div>
         </div>
-        <div class="content">
-            <video-item v-for="(item, index) in videoList" :key="index"
-                        :video="item"></video-item>
+        <div class="video-list">
+            <vip-video-item v-for="(item, index) in videoList" :key="index"
+                            :video="item"></vip-video-item>
         </div>
     </div>
 </template>
 
 <script>
-    import videoItem from './VideoItem.vue'
+    import vipVideoItem from './VIPVideoItem.vue'
 
     export default {
-        name: "searchVideos",
-        props: ['type', 'query'],
+        name: "vipVideos",
         data: () => ({
             videoList: [],
             page: 1,
-            lastPage: null
+            lastPage: null,
+            show: true
         }),
         methods: {
-            searchVideo() {
-                axios.get(`${apiRoot}video/${this.type}`, {params: {q: this.query}})
+            getVideos() {
+                axios.get(`${apiRoot}vipVideos`, {
+                    params: {
+                        page: this.page
+                    }
+                })
                     .then(response => {
                         if (this.lastPage === null) {
                             this.lastPage = response.data.last_page;
@@ -45,7 +49,7 @@
             },
             prevPage() {
                 this.page === 1 ? alert('欸？到头啦…') : this.page--;
-                this.searchVideo();
+                this.getVideos();
             },
             nextPage() {
                 if (this.lastPage !== null && this.page === this.lastPage) {
@@ -54,14 +58,14 @@
                 }
 
                 this.page++;
-                this.searchVideo();
-            },
+                this.getVideos();
+            }
         },
         created() {
-            this.searchVideo();
+            this.getVideos();
         },
         components: {
-            videoItem
+            vipVideoItem
         }
     }
 </script>

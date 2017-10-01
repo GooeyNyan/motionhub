@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'confirmation_token'
+        'name', 'email', 'password', 'avatar', 'confirmation_token', 'api_token'
     ];
 
     /**
@@ -32,8 +32,18 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class)->withTimestamps();
     }
 
+    public function vipVideos()
+    {
+        return $this->belongsToMany(vipVideo::class, 'user_vip_video')->withTimestamps();
+    }
+
     public function isAdmin()
     {
         return $this->is_admin === 1;
+    }
+
+    public function permitted($video)
+    {
+        return !!$this->vipVideos()->where('vip_video_id', $video)->count();
     }
 }

@@ -22,6 +22,10 @@ Vue.component('hotVideos', require('./components/HotVideos.vue'));
 Vue.component('categoryVideos', require('./components/CategoryVideos.vue'));
 Vue.component('search', require('./components/Search.vue'));
 Vue.component('subMenu', require('./components/SubMenu.vue'));
+Vue.component('vipVideoItem', require('./components/VIPVideoItem.vue'));
+Vue.component('vipVideos', require('./components/VIPVideos.vue'));
+Vue.component('vipSearch', require('./components/VIPSearch.vue'));
+Vue.component('keyValidator', require('./components/KeyValidator.vue'));
 
 const app = new Vue({
     el: '#app'

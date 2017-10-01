@@ -2,696 +2,13 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600)
 
 @import "select2.min"
+@import "swiper.min"
 
 // Bootstrap
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"
 @import "variables"
 @import "mixin"
 @import "media"
-
-html, body
-  margin: 0
-
-body
-  position: relative
-
-p, h1, h2, h3, h4, h5, h6
-  margin: 0
-
-a
-  text-decoration: none
-  &:visited, &:hover, &:focus, &:active, &:link
-    color: #fff
-
-header
-  display: flex
-  position: relative
-  width: 100%
-  height: 120px
-  align-items: center
-  background: $header-color
-  .logo
-    margin-left: 88px
-  .search-wrapper
-    position: relative
-    margin-left: 30px
-    form
-      position: relative
-      .video-search
-        padding-left: 18px
-        width: 560px
-        height: 55px
-        font-size: 16px
-        color: $search-input-color
-        box-sizing: border-box
-        border: 2px solid $search-box-color
-        border-radius: 2px
-        box-shadow: inset 0 0 3px black, 0 0 3px black
-        background: transparent
-        &::placeholder
-          font-size: 16px
-          color: $search-input-color
-          text-shadow: 0 0 2px black
-      .search-submit
-        position: absolute
-        right: 6px
-        top: 14px
-    .desc
-      position: absolute
-      left: 0
-      bottom: -20px
-      font-size: 12px
-      color: #8F8F8F
-      text-shadow: 0 0 1px black
-  .video-submit, .login-btn, .share-overview
-    position: absolute
-    right: 28px
-    top: 40px
-    @include button
-    &.video-submit
-      right: 160px
-    &.share-overview
-      right: 292px
-
-main#index
-  background: $main-container-color
-  .navbar
-    width: 100%
-    height: 64px
-    background: $navbar-color
-    .nav-item
-      position: relative
-      display: inline-block
-      padding: 0 22px
-      line-height: 64px
-      color: #fff
-      .sub-menu
-        position: absolute
-        margin: 0
-        padding: 0
-        top: 64px
-        left: 20px
-        z-index: 10
-        box-shadow: 0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)
-        background: #fff
-        .menu-item
-          padding-left: 10px
-          list-style-type: none
-          background: #fff
-          &:hover
-            background: #fafafa
-            transition: all 0.3s
-          a
-            display: block
-            color: #4c626d
-            overflow: hidden
-            white-space: nowrap
-            text-overflow: ellipsis
-            &:hover
-              color: #32a1cf
-              transition: all 0.3s
-  .container-fluid
-    display: flex
-    width: 100%
-    .share
-      flex: 1
-      margin-top: 80px
-      .icon-wrapper
-        display: flex
-        margin: 0 auto
-        width: 190px
-        flex-wrap: wrap
-        justify-content: space-around
-        .icon-item
-          display: inline-block
-          margin-top: 12px
-          &:nth-of-type(-n + 3)
-            margin-top: 0
-      .desc
-        margin: 10px auto
-        width: 160px
-        line-height: 24px
-        font-size: 16px
-        color: #666
-        text-shadow: 0 0 1px #666
-    .videos
-      margin-bottom: 12px
-      padding: 0 55px
-      flex: 0 0 1090px
-      background: #fff
-      box-shadow: 0 0 3px rgba(102, 102, 102, 0.7)
-      .hot
-        @include video-title
-        margin-top: 55px
-        .header
-          position: relative
-          padding-bottom: 19px
-          @include border-bottom
-          .title
-            font-size: 28px
-            color: $content-title-color
-          .pagination
-            position: absolute
-            right: 0
-            top: 0
-            font-size: 0
-            .prev, .next
-              display: inline-block
-              width: 53px
-              height: 39px
-              line-height: 48px
-              text-align: center
-              box-sizing: border-box
-              border: 1px solid $pagination-btn-border-color
-              border-radius: 2px
-            .next
-              margin-left: 14px
-        .content
-          display: flex
-          padding: 46px 0
-          @include border-bottom
-          .hero
-            display: inline-block
-          .other
-            display: inline-block
-            flex: 1
-            .videos-wrapper
-              display: flex
-              flex-wrap: wrap
-          .video-item
-            @include video-items
-            &
-              margin: 8px 0 0 15px
-            &.main
-              margin: 0
-              width: 537px
-              height: 353px
-            &:nth-of-type(-n + 2)
-              margin-top: 0
-      > div:not(.hot)
-        @include header
-        @include video-list
-        @include video-title
-
-      .showreels
-        .content
-          &
-            border-bottom: 0
-    .subscription-wrapper
-      flex: 2
-      .subscription
-        margin: 40px auto
-        width: 402px
-        height: 333px
-        color: #999
-        background: #fff
-        .title
-          padding-top: 26px
-          text-align: center
-          & > h2
-            font-size: 26px
-            font-weight: normal
-        .desc
-          margin: 24px 0 0 58px
-          line-height: 24px
-          font-size: 14px
-        .subscribe-btn
-          display: block
-          margin: 24px auto 0 auto
-          width: 297px
-          height: 59px
-          font-size: 22px
-          color: #fff
-          border: 0
-          box-shadow: -1px 1px 3px rgba(7, 17, 27, 0.3)
-          background: #00bff3
-        .text-box
-          position: relative
-          .subscribe-input
-            display: block
-            margin: 7px auto 0 auto
-            padding-left: 14px
-            width: 283px
-            height: 35px
-            font-size: 16px
-            border: 1px solid #ccc
-            box-shadow: -1px 1px 4px rgba(7, 17, 27, 0.2)
-            &::placeholder
-              font-size: 16px
-              color: #d3d3d3
-          .icon-envelope
-            position: absolute
-            right: 63px
-            top: 12px
-
-main#center
-  margin-bottom: 30px
-  .banner
-    display: flex
-    position: relative
-    align-items: center
-    width: 100%
-    height: 482px
-    background: $banner-background-color
-    .title-wrapper
-      min-width: 400px
-      margin-left: 222px
-      .title
-        line-height: 75px
-        font-size: 50px
-        font-family: SimHei, serif
-        color: #fff
-      .check
-        margin-top: 16px
-        @include button
-    .img-wrapper
-      display: flex
-      flex: 1
-      margin-left: 116px
-      justify-content: space-around
-      img
-        width: 406px
-        height: 406px
-        border-radius: 50%
-    .pagination
-      display: flex
-      position: absolute
-      bottom: 12px
-      justify-content: center
-      width: 100%
-      .page
-        margin-right: 14px
-        width: 16px
-        height: 16px
-        border-radius: 50%
-        background: $pagination-color
-        &.active
-          background: $pagination-active-color
-  .profile
-    display: flex
-    justify-content: flex-end
-    align-items: center
-    width: 100%
-    height: 88px
-    .avatar
-      width: 34px
-      height: 34px
-    .committee
-      display: flex
-      align-items: center
-      justify-content: space-around
-      margin: 0 58px 0 38px
-      @include button
-      .text
-        margin-left: -16px
-    .shopcart, .info, .avatar
-      margin-left: 20px
-  .video-list
-    display: flex
-    flex-wrap: wrap
-    margin: 0 auto
-    padding: 0 17px
-    width: 1125px
-    border-top: 2px solid #7fccfe
-    .video-card
-      margin: 33px 17px 0 0
-      width: 358px
-      height: 508px
-      font-size: 0
-      border-radius: 4px
-      box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.2)
-      .video-img
-        width: 100%
-        height: 233px
-        border-top-left-radius: 4px
-        border-top-right-radius: 4px
-      .content
-        position: relative
-        padding: 0 26px
-        height: calc(100% - 233px)
-        .title
-          padding-top: 28px
-          min-height: 66px
-          font-size: 18px
-          color: #0099ff
-          text-align: center
-        .avatar-wrapper
-          display: flex
-          justify-content: flex-start
-          align-items: center
-          .info
-            margin-left: 12px
-            font-size: 14px
-            color: #707070
-        .level-length
-          margin-top: 21px
-          .level
-            display: inline-block
-            font-size: 12px
-            .circle
-              display: inline-block
-              margin-right: 8px
-              vertical-align: -5%
-              width: 12px
-              height: 12px
-              border-radius: 50%
-            &.primary
-              color: $lesson-primary-color
-              .circle
-                background: $lesson-primary-color
-            &.intermediate
-              color: $lesson-intermediate-color
-              .circle
-                background: $lesson-intermediate-color
-            &.advanced
-              color: $lesson-advanced-color
-              .circle
-                background: $lesson-advanced-color
-          .length
-            display: inline-block
-            margin-left: 26px
-            font-size: 12px
-            color: #707070
-            img
-              margin-right: 4px
-        .buy
-          display: flex
-          position: absolute
-          bottom: 26px
-          right: 32px
-          width: 88px
-          height: 34px
-          justify-content: space-between
-          align-items: center
-          line-height: 34px
-          font-size: 19px
-          font-family: SimHei, serif
-          color: #fff
-          text-align: left
-          border: 0
-          border-radius: 3px
-          background: #0099ff
-          img
-            vertical-align: sub
-
-// 登录界面
-.signin-container
-  width: 100%
-  height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
-  background: url("/images/bg.jpg")
-  background-size: cover
-  .signin_wrapper
-    padding: 0 100px
-    width: 501px
-    height: 427px
-    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
-    border-radius: 17px
-    background: rgba(56, 96, 122, 0.44)
-    .logo
-      display: flex
-      margin-top: 38px
-      justify-content: center
-    .form-wrapper
-      margin-top: 44px
-      color: #fff
-      .signin-control
-        position: relative
-        font-size: 16px
-        &:nth-of-type(n + 2)
-          margin-top: 20px
-        .desc
-          display: inline-block
-          position: absolute
-          line-height: 54px
-          &.name
-            letter-spacing: 2px
-          &.psw
-            letter-spacing: 19px
-        .signin-input
-          padding: 0 0 0 60px
-          width: calc(100% - 60px)
-          height: 54px
-          line-height: 54px
-          font-size: 16px
-          color: #fff
-          border: 0
-          border-bottom: 1px solid #fff
-          background: rgba(0, 0, 0, 0)
-      .signin_links
-        display: flex
-        justify-content: flex-end
-        font-size: 12px
-        .link-wrapper
-          padding-top: 14px
-          letter-spacing: 1px
-          &:first-of-type
-            margin-right: 24px
-            & a
-              padding-right: 7px
-          &:last-of-type
-            margin-right: 4px
-          & a
-            border-bottom: 1px solid #fff
-            text-decoration: none
-            &:hover, &:visited, &:active, &:focus
-              color: #fff
-
-.register-container
-  width: 100%
-  height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
-  background: url("/images/bg.jpg")
-  background-size: cover
-  .register_wrapper
-    padding: 0 100px 50px 100px
-    width: 501px
-    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
-    border-radius: 17px
-    background: rgba(56, 96, 122, 0.44)
-    .logo
-      display: flex
-      margin-top: 38px
-      justify-content: center
-    .form-wrapper
-      margin-top: 44px
-      color: #fff
-      .register-control
-        position: relative
-        font-size: 16px
-        &:nth-of-type(n + 2)
-          margin-top: 20px
-        .desc
-          display: inline-block
-          position: absolute
-          line-height: 54px
-        .register-input
-          padding: 0 0 0 80px
-          width: calc(100% - 80px)
-          height: 54px
-          line-height: 54px
-          font-size: 16px
-          color: #fff
-          border: 0
-          border-bottom: 1px solid #fff
-          background: rgba(0, 0, 0, 0)
-      .register_links
-        display: flex
-        justify-content: flex-end
-        font-size: 12px
-        .link-wrapper
-          padding-top: 14px
-          letter-spacing: 1px
-          &:first-of-type
-            margin-right: 24px
-            & a
-              padding-right: 7px
-          &:last-of-type
-            margin-right: 4px
-          & a
-            border-bottom: 1px solid #fff
-            text-decoration: none
-            &:hover, &:visited, &:active, &:focus
-              color: #fff
-
-.video-submit-container, .video-share-container
-  width: 100%
-  min-height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
-  background: url("/images/bg.jpg")
-  background-size: cover
-  &.video-share-container
-    justify-content: space-around
-  .video-share-wrapper, .video-submit-wrapper
-    padding: 0 100px 50px 100px
-    width: 501px
-    box-shadow: 0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)
-    border-radius: 2px
-    background: rgba(56, 96, 122, 0.44)
-    .logo
-      display: flex
-      margin-top: 38px
-      justify-content: center
-    .form-wrapper
-      margin-top: 44px
-      color: #fff
-      .form-group
-        label
-          display: block
-          margin-bottom: 6px
-      .edui-editor
-        width: 522px !important
-
-.button-wrapper
-  display: flex
-  justify-content: center
-  .signin_button, .register_button, .video-submit-btn
-    margin-top: 35px
-    padding: 0
-    width: 348px
-    height: 45px
-    line-height: 45px
-    font-size: 14px
-    color: white
-    text-align: center
-    letter-spacing: 7px
-    border: 0
-    border-radius: 22px
-    background-color: #02D7C1
-
-.video-container
-  display: flex
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  height: 100vh
-  z-index: 100
-  justify-content: center
-  align-items: center
-  background: rgba(0, 0, 0, 0.3)
-
-#vip-detail
-  width: 60%
-  margin-left: 20%
-  .head
-    position: relative
-    top: 200px
-    font-size: 44px
-    color: white
-    letter-spacing: 2px
-    text-shadow: 1px 1px 10px black
-  .page
-    position: relative
-    background-color: white
-    width: 100%
-    height: 420px
-    margin-top: -30px
-    top: 250px
-    padding: 20px
-    border-radius: 3px
-    box-shadow: 0 0 30px #8F8F8F
-  .video
-    background-color: #8F8F8F
-    width: 60%
-    height: 420px
-    float: left
-  .right-message
-    float: right
-    margin-right: 40px
-    margin-top: 10px
-    height: 100%
-    width: 30%
-  .notice
-    font-size: 20px
-    color: black
-  .use
-    font-size: 20px
-    color: black
-  .circle
-    background-color: #33b6a0
-    width: 15px
-    height: 15px
-    margin-top: 4px
-    border-radius: 50%
-    float: left
-  .grade
-    color: #33b6a0
-    font-size: 15px
-    margin-left: 5px
-  .ae
-    width: 50px
-    height: auto
-    margin-top: 5px
-    margin-bottom: 10px
-  .time
-    color: black
-  .cd
-    width: 19px
-    height: auto
-  .data
-    color: #979897
-    font-size: 13px
-  .page-end
-    margin-top: 100px
-  .price
-    position: absolute
-    margin-top: 280px
-    right: 18%
-    font-size: 26px
-    color: #737373
-  .buy
-    position: absolute
-    margin-top: 320px
-    right: 17%
-    background-color: #34d69f
-    text-align: center
-    font-size: 15px
-    width: 130px
-    height: 40px
-    border-radius: 3px
-    border: 0
-    color: white
-    float: right
-  .move
-    position: absolute
-    margin-top: 320px
-    right: 28%
-    color: #67b6ff
-    background-color: white
-    text-align: center
-    font-size: 15px
-    width: 100px
-    height: 40px
-    border-radius: 3px
-    border: 1px solid #67b6ff
-  .move img
-    width: 28px
-    height: auto
-    margin-left: 5px
-    vertical-align: -6px
-  .about
-    position: relative
-    top: 350px
-    font-size: 26px
-    color: #6a6a6a
-  .description
-    position: relative
-    top: 360px
-    padding-bottom: 100px
-    width: 60%
-    font-size: 20px
-    line-height: 30px
-    color: #888
-  .description img
-    margin-top: 20px
-    width: 100%
 
 // bootstrap
 .has-success .help-block,
@@ -1147,8 +464,737 @@ select[multiple].input-lg,
 .input-group .form-control:not(:first-child):not(:last-child)
   border-radius: 0
 
+html, body
+  margin: 0
+
+body
+  position: relative
+
+p, h1, h2, h3, h4, h5, h6
+  margin: 0
+
+a
+  text-decoration: none
+  &:visited, &:hover, &:focus, &:active, &:link
+    color: #fff
+
 // animation
 .fade-enter-active, .fade-leave-active
   transition: opacity .3s ease-in-out
+
 .fade-enter, .fade-leave-to
   opacity: 0
+
+header
+  display: flex
+  position: relative
+  width: 100%
+  height: 120px
+  align-items: center
+  background: $header-color
+  .logo
+    margin-left: 88px
+  .search-wrapper
+    position: relative
+    margin-left: 30px
+    form
+      position: relative
+      .video-search
+        padding-left: 18px
+        width: 560px
+        height: 55px
+        font-size: 16px
+        color: $search-input-color
+        box-sizing: border-box
+        border: 2px solid $search-box-color
+        border-radius: 2px
+        box-shadow: inset 0 0 3px black, 0 0 3px black
+        background: transparent
+        &::placeholder
+          font-size: 16px
+          color: $search-input-color
+          text-shadow: 0 0 2px black
+      .search-submit
+        position: absolute
+        right: 6px
+        top: 14px
+    .desc
+      position: absolute
+      left: 0
+      bottom: -20px
+      font-size: 12px
+      color: #8F8F8F
+      text-shadow: 0 0 1px black
+  .header-btn
+    position: absolute
+    right: 28px
+    top: 40px
+    @include button
+
+main#index
+  background: $main-container-color
+  .navbar
+    width: 100%
+    height: 64px
+    background: $navbar-color
+    .nav-item
+      position: relative
+      display: inline-block
+      padding: 0 22px
+      line-height: 64px
+      color: #fff
+      .sub-menu
+        position: absolute
+        margin: 0
+        padding: 0
+        top: 64px
+        left: 20px
+        z-index: 10
+        box-shadow: 0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)
+        background: #fff
+        .menu-item
+          padding-left: 10px
+          list-style-type: none
+          background: #fff
+          &:hover
+            background: #fafafa
+            transition: all 0.3s
+          a
+            display: block
+            color: #4c626d
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
+            &:hover
+              color: #32a1cf
+              transition: all 0.3s
+  .container-fluid
+    display: flex
+    width: 100%
+    .share
+      flex: 1
+      margin-top: 80px
+      .icon-wrapper
+        display: flex
+        margin: 0 auto
+        width: 190px
+        flex-wrap: wrap
+        justify-content: space-around
+        .icon-item
+          display: inline-block
+          margin-top: 12px
+          &:nth-of-type(-n + 3)
+            margin-top: 0
+      .desc
+        margin: 10px auto
+        width: 160px
+        line-height: 24px
+        font-size: 16px
+        color: #666
+        text-shadow: 0 0 1px #666
+    .videos
+      margin-bottom: 12px
+      padding: 0 55px
+      flex: 0 0 1090px
+      background: #fff
+      box-shadow: 0 0 3px rgba(102, 102, 102, 0.7)
+      .hot
+        @include video-title
+        margin-top: 55px
+        .header
+          position: relative
+          padding-bottom: 19px
+          @include border-bottom
+          .title
+            font-size: 28px
+            color: $content-title-color
+          .pagination
+            position: absolute
+            right: 0
+            top: 0
+            font-size: 0
+            .prev, .next
+              display: inline-block
+              width: 53px
+              height: 39px
+              line-height: 48px
+              text-align: center
+              box-sizing: border-box
+              border: 1px solid $pagination-btn-border-color
+              border-radius: 2px
+            .next
+              margin-left: 14px
+        .content
+          display: flex
+          padding: 46px 0
+          @include border-bottom
+          .hero
+            display: inline-block
+          .other
+            display: inline-block
+            flex: 1
+            .videos-wrapper
+              display: flex
+              flex-wrap: wrap
+          .video-item
+            @include video-items
+            &
+              margin: 8px 0 0 15px
+            &.main
+              margin: 0
+              width: 537px
+              height: 353px
+            &:nth-of-type(-n + 2)
+              margin-top: 0
+      > div:not(.hot)
+        @include header
+        @include video-list
+        @include video-title
+
+      .showreels
+        .content
+          &
+            border-bottom: 0
+    .subscription-wrapper
+      flex: 2
+      .subscription
+        margin: 40px auto
+        width: 402px
+        height: 333px
+        color: #999
+        background: #fff
+        .title
+          padding-top: 26px
+          text-align: center
+          & > h2
+            font-size: 26px
+            font-weight: normal
+        .desc
+          margin: 24px 0 0 58px
+          line-height: 24px
+          font-size: 14px
+        .subscribe-btn
+          display: block
+          margin: 24px auto 0 auto
+          width: 297px
+          height: 59px
+          font-size: 22px
+          color: #fff
+          border: 0
+          box-shadow: -1px 1px 3px rgba(7, 17, 27, 0.3)
+          background: #00bff3
+        .text-box
+          position: relative
+          .subscribe-input
+            display: block
+            margin: 7px auto 0 auto
+            padding-left: 14px
+            width: 283px
+            height: 35px
+            font-size: 16px
+            border: 1px solid #ccc
+            box-shadow: -1px 1px 4px rgba(7, 17, 27, 0.2)
+            &::placeholder
+              font-size: 16px
+              color: #d3d3d3
+          .icon-envelope
+            position: absolute
+            right: 63px
+            top: 12px
+
+main#center
+  margin-bottom: 30px
+  .banner
+    display: flex
+    position: relative
+    align-items: center
+    width: 100%
+    height: 482px
+    background: $banner-background-color
+    .title-wrapper
+      min-width: 400px
+      margin-left: 222px
+      .title
+        line-height: 75px
+        font-size: 50px
+        font-family: SimHei, serif
+        color: #fff
+      .check
+        margin-top: 16px
+        @include button
+    .img-wrapper
+      display: flex
+      flex: 1
+      margin-left: 116px
+      justify-content: space-around
+      img
+        width: 406px
+        height: 406px
+        border-radius: 50%
+    .pagination
+      display: flex
+      position: absolute
+      bottom: 12px
+      justify-content: center
+      width: 100%
+      .page
+        margin-right: 14px
+        width: 16px
+        height: 16px
+        border-radius: 50%
+        background: $pagination-color
+        &.active
+          background: $pagination-active-color
+  .profile
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    width: 100%
+    height: 88px
+    .avatar
+      width: 34px
+      height: 34px
+    .committee
+      display: flex
+      align-items: center
+      justify-content: space-around
+      margin: 0 58px 0 38px
+      @include button
+      .text
+        margin-left: -16px
+    .shopcart, .info, .avatar
+      margin-left: 20px
+  .video-list
+    display: flex
+    flex-wrap: wrap
+    padding: 0 17px
+    width: 100%
+    border-top: 2px solid #7fccfe
+    .video-card
+      margin: 33px 17px 0 0
+      width: 358px
+      height: 508px
+      font-size: 0
+      border-radius: 4px
+      box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.2)
+      .video-img
+        width: 100%
+        height: 233px
+        border-top-left-radius: 4px
+        border-top-right-radius: 4px
+      .content
+        position: relative
+        padding: 0 26px
+        height: calc(100% - 233px)
+        .title
+          padding-top: 28px
+          min-height: 66px
+          font-size: 18px
+          color: #0099ff
+          text-align: center
+        .avatar-wrapper
+          display: flex
+          justify-content: flex-start
+          align-items: center
+          .info
+            margin-left: 12px
+            font-size: 14px
+            color: #707070
+        .level-length
+          margin-top: 21px
+          .level
+            display: inline-block
+            font-size: 12px
+            .circle
+              display: inline-block
+              margin-right: 8px
+              vertical-align: -5%
+              width: 12px
+              height: 12px
+              border-radius: 50%
+            &.primary
+              color: $lesson-primary-color
+              .circle
+                background: $lesson-primary-color
+            &.intermediate
+              color: $lesson-intermediate-color
+              .circle
+                background: $lesson-intermediate-color
+            &.advanced
+              color: $lesson-advanced-color
+              .circle
+                background: $lesson-advanced-color
+          .length
+            display: inline-block
+            margin-left: 26px
+            font-size: 12px
+            color: #707070
+            img
+              margin-right: 4px
+        .buy
+          display: flex
+          position: absolute
+          bottom: 26px
+          right: 32px
+          width: 88px
+          height: 34px
+          justify-content: space-between
+          align-items: center
+          line-height: 34px
+          font-size: 19px
+          font-family: SimHei, serif
+          color: #fff
+          text-align: left
+          border: 0
+          border-radius: 3px
+          background: #0099ff
+          img
+            margin-left: 3px
+            vertical-align: sub
+
+.vip-videos
+  margin: 0 auto
+  width: 1125px
+  .header
+    position: relative
+    padding-bottom: 19px
+    //@include border-bottom
+    .title
+      font-size: 28px
+      color: $content-title-color
+    .pagination
+      position: absolute
+      right: 0
+      top: 0
+      font-size: 0
+      .prev, .next
+        display: inline-block
+        width: 53px
+        height: 39px
+        line-height: 48px
+        text-align: center
+        box-sizing: border-box
+        border: 1px solid $pagination-btn-border-color
+        border-radius: 2px
+      .next
+        margin-left: 14px
+
+// 登录界面
+.signin-container
+  width: 100%
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url("/images/bg.jpg")
+  background-size: cover
+  .signin_wrapper
+    padding: 0 100px
+    width: 501px
+    height: 427px
+    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
+    border-radius: 17px
+    background: rgba(56, 96, 122, 0.44)
+    .logo
+      display: flex
+      margin-top: 38px
+      justify-content: center
+    .form-wrapper
+      margin-top: 44px
+      color: #fff
+      .signin-control
+        position: relative
+        font-size: 16px
+        &:nth-of-type(n + 2)
+          margin-top: 20px
+        .desc
+          display: inline-block
+          position: absolute
+          line-height: 54px
+          &.name
+            letter-spacing: 2px
+          &.psw
+            letter-spacing: 19px
+        .signin-input
+          padding: 0 0 0 60px
+          width: calc(100% - 60px)
+          height: 54px
+          line-height: 54px
+          font-size: 16px
+          color: #fff
+          border: 0
+          border-bottom: 1px solid #fff
+          background: rgba(0, 0, 0, 0)
+      .signin_links
+        display: flex
+        justify-content: flex-end
+        font-size: 12px
+        .link-wrapper
+          padding-top: 14px
+          letter-spacing: 1px
+          &:first-of-type
+            margin-right: 24px
+            & a
+              padding-right: 7px
+          &:last-of-type
+            margin-right: 4px
+          & a
+            border-bottom: 1px solid #fff
+            text-decoration: none
+            &:hover, &:visited, &:active, &:focus
+              color: #fff
+
+.register-container
+  width: 100%
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url("/images/bg.jpg")
+  background-size: cover
+  .register_wrapper
+    padding: 0 100px 50px 100px
+    width: 501px
+    box-shadow: 5px 5px 5px rgba(7, 17, 27, 0.05)
+    border-radius: 17px
+    background: rgba(56, 96, 122, 0.44)
+    .logo
+      display: flex
+      margin-top: 38px
+      justify-content: center
+    .form-wrapper
+      margin-top: 44px
+      color: #fff
+      .register-control
+        position: relative
+        font-size: 16px
+        &:nth-of-type(n + 2)
+          margin-top: 20px
+        .desc
+          display: inline-block
+          position: absolute
+          line-height: 54px
+        .register-input
+          padding: 0 0 0 80px
+          width: calc(100% - 80px)
+          height: 54px
+          line-height: 54px
+          font-size: 16px
+          color: #fff
+          border: 0
+          border-bottom: 1px solid #fff
+          background: rgba(0, 0, 0, 0)
+      .register_links
+        display: flex
+        justify-content: flex-end
+        font-size: 12px
+        .link-wrapper
+          padding-top: 14px
+          letter-spacing: 1px
+          &:first-of-type
+            margin-right: 24px
+            & a
+              padding-right: 7px
+          &:last-of-type
+            margin-right: 4px
+          & a
+            border-bottom: 1px solid #fff
+            text-decoration: none
+            &:hover, &:visited, &:active, &:focus
+              color: #fff
+
+.video-submit-container, .video-share-container
+  width: 100%
+  min-height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url("/images/bg.jpg")
+  background-size: cover
+  &.video-share-container
+    justify-content: space-around
+.video-share-wrapper, .video-submit-wrapper
+  padding: 0 100px 50px 100px
+  width: 501px
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)
+  border-radius: 2px
+  background: rgba(56, 96, 122, 0.44)
+  .logo
+    display: flex
+    margin-top: 38px
+    justify-content: center
+  .form-wrapper
+    margin-top: 44px
+    color: #fff
+    .form-group
+      label
+        display: block
+        margin-bottom: 6px
+    .edui-editor
+      width: 522px !important
+
+.button-wrapper
+  display: flex
+  justify-content: center
+  .signin_button, .register_button, .video-submit-btn
+    margin-top: 35px
+    padding: 0
+    width: 348px
+    height: 45px
+    line-height: 45px
+    font-size: 14px
+    color: white
+    text-align: center
+    letter-spacing: 7px
+    border: 0
+    border-radius: 22px
+    background-color: #02D7C1
+
+.video-container
+  display: flex
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  z-index: 100
+  justify-content: center
+  align-items: center
+  background: rgba(0, 0, 0, 0.3)
+
+#vip-detail
+  width: 60%
+  margin-left: 20%
+  .head
+    position: relative
+    top: 200px
+    font-size: 44px
+    color: white
+    letter-spacing: 2px
+    text-shadow: 1px 1px 10px black
+  .page
+    position: relative
+    background-color: white
+    width: 100%
+    height: 420px
+    margin-top: -30px
+    top: 250px
+    padding: 20px
+    border-radius: 3px
+    box-shadow: 0 0 30px #8F8F8F
+  .video
+    background-color: #8F8F8F
+    width: 60%
+    height: 420px
+    float: left
+  .right-message
+    float: right
+    margin-right: 40px
+    margin-top: 10px
+    height: 100%
+    width: 30%
+  .notice
+    font-size: 20px
+    color: black
+  .use
+    font-size: 20px
+    color: black
+  .circle
+    background-color: #33b6a0
+    width: 15px
+    height: 15px
+    margin-top: 4px
+    border-radius: 50%
+    float: left
+  .grade
+    color: #33b6a0
+    font-size: 15px
+    margin-left: 5px
+  .ae
+    width: 50px
+    height: auto
+    margin-top: 5px
+    margin-bottom: 10px
+  .time
+    color: black
+  .cd
+    width: 19px
+    height: auto
+  .data
+    color: #979897
+    font-size: 13px
+  .page-end
+    margin-top: 100px
+  .price
+    position: absolute
+    margin-top: 280px
+    right: 18%
+    font-size: 26px
+    color: #737373
+  .buy
+    position: absolute
+    margin-top: 320px
+    right: 17%
+    background-color: #34d69f
+    text-align: center
+    font-size: 15px
+    width: 130px
+    height: 40px
+    border-radius: 3px
+    border: 0
+    color: white
+    float: right
+  .move
+    position: absolute
+    margin-top: 320px
+    right: 28%
+    color: #67b6ff
+    background-color: white
+    text-align: center
+    font-size: 15px
+    width: 100px
+    height: 40px
+    border-radius: 3px
+    border: 1px solid #67b6ff
+  .move img
+    width: 28px
+    height: auto
+    margin-left: 5px
+    vertical-align: -6px
+  .about
+    position: relative
+    top: 350px
+    font-size: 26px
+    color: #6a6a6a
+  .description
+    position: relative
+    top: 360px
+    padding-bottom: 100px
+    width: 60%
+    font-size: 20px
+    line-height: 30px
+    color: #888
+  .description img
+    margin-top: 20px
+    width: 100%
+
+.validator
+  position: absolute
+  top: 830px
+  right: 480px
+  .validator-btn
+    @include button
+  .validator-wrapper
+    position: absolute
+    top: 50px
+  .video-submit-wrapper
+    padding: 10px 40px 30px 20px
+    width: 230px
+  .video-submit-btn
+    margin-top: 12px
+    height: 38px
+    line-height: 38px
+  .close
+    float: right
+    margin: -20px -40px 0 0
+    padding: 20px
