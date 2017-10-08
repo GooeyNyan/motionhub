@@ -11,7 +11,6 @@ use App\vipVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use function PHPSTORM_META\map;
 
 class APIController extends Controller
 {
@@ -176,6 +175,15 @@ class APIController extends Controller
             ->get();
 
         return $tags;
+    }
+
+    public function getDownloadLink(Request $request)
+    {
+        $video = Video::where('id', $request->get('id'))
+            ->select(['download_link', 'netdisk_key'])
+            ->first();
+
+        return $video;
     }
 
 //    video share api

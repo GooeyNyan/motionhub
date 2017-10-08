@@ -28,6 +28,7 @@ Route::get('/videos', 'APIController@getVideos')->middleware('api');
 Route::patch('/video/watch', 'APIController@updateWatched')->middleware('api');
 Route::get('/video/name', 'APIController@searchVideoByName')->middleware('api');
 Route::get('/video/tag', 'APIController@searchVideoByTag')->middleware('api');
+Route::get('/video/download', 'APIController@getDownloadLink')->middleware('api');
 
 Route::get('/vipVideos', 'APIController@getVIPVideos')->middleware('api');
 Route::get('/vip/name', 'APIController@searchVIPVideoByName')->middleware('api');

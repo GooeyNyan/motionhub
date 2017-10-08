@@ -17,7 +17,7 @@
 
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
                         <label for="name">标题</label>
-                        <input name="name" class="form-control" placeholder="标题" id="name">
+                        <input name="name" class="form-control" placeholder="标题" id="name" required="required">
                         @if ($errors->has('name'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -27,7 +27,7 @@
 
                     <div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}">
                         <label for="link">视频链接</label>
-                        <input name="link" class="form-control" placeholder="视频链接" id="link">
+                        <input name="link" class="form-control" placeholder="视频链接" id="link" required="required">
                         @if ($errors->has('link'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('link') }}</strong>
@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="category">分类</label>
-                        <select class="js-example-basic-single" name="category" id="category">
+                        <select class="js-example-basic-single" name="category" id="category" required="required">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -65,6 +65,26 @@
                         <script id="editor2" name="desc" type="text/plain">
                             {!! old('desc') !!}
                         </script>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('download') ? 'has-error' : ''}}">
+                        <label for="download">下载链接</label>
+                        <input name="download" class="form-control" placeholder="可空" id="download">
+                        @if ($errors->has('download'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('download') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group {{ $errors->has('netdisk_key') ? 'has-error' : ''}}">
+                        <label for="netdisk_key">网盘密码</label>
+                        <input name="netdisk_key" class="form-control" placeholder="可空" id="netdisk_key">
+                        @if ($errors->has('netdisk_key'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('netdisk_key') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="button-wrapper">

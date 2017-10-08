@@ -42140,6 +42140,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42148,26 +42165,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             play: false,
+            show: false,
             link: '',
-            name: ''
+            name: '',
+            download: '',
+            key: ''
         };
     },
     methods: {
         playVideo: function playVideo(video) {
+            var _this = this;
+
             this.play = true;
             this.link = video.link;
             this.name = video.name;
+            axios.get(apiRoot + 'video/download', { params: { id: video.id } }).then(function (response) {
+                _this.download = response.data.download_link;
+                _this.key = response.data.netdisk_key;
+            }).catch(function (error) {
+                console.log(error);
+            });
             axios.patch(apiRoot + 'video/watch', { id: video.id });
         },
         stopPlay: function stopPlay() {
             this.play = false;
+        },
+        rotateShow: function rotateShow() {
+            this.show = !this.show;
         }
     },
     created: function created() {
-        var _this = this;
+        var _this2 = this;
 
         __WEBPACK_IMPORTED_MODULE_0__eventHub__["a" /* default */].$on('video.play', function (video) {
-            _this.playVideo(video);
+            _this2.playVideo(video);
+            _this2.show = false;
         });
     }
 });
@@ -42183,7 +42215,17 @@ var render = function() {
   return _vm.play
     ? _c(
         "div",
-        { staticClass: "video-container", on: { click: _vm.stopPlay } },
+        {
+          staticClass: "video-container",
+          on: {
+            click: function($event) {
+              if ($event.target !== $event.currentTarget) {
+                return null
+              }
+              _vm.stopPlay($event)
+            }
+          }
+        },
         [
           _c("div", {
             ref: "videoWrapper",
@@ -42195,7 +42237,55 @@ var render = function() {
             _c("h3", {
               staticClass: "title",
               domProps: { textContent: _vm._s(_vm.name) }
-            })
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "download" }, [
+              _c("div", { staticClass: "btn", on: { click: _vm.rotateShow } }, [
+                _vm._v("DOWNLOAD")
+              ]),
+              _vm._v(" "),
+              _vm.show
+                ? _c("div", { staticClass: "wrapper" }, [
+                    _c(
+                      "div",
+                      { staticClass: "validate video-submit-wrapper" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "close",
+                            on: { click: _vm.rotateShow }
+                          },
+                          [_vm._v("x")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-wrapper" }, [
+                          _c("p", [
+                            _vm._v("网盘链接：\n                            "),
+                            _c("small", [
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: _vm.download,
+                                    target: "_blank"
+                                  }
+                                },
+                                [_vm._v("百度网盘")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("密码：\n                            "),
+                            _c("small", [_vm._v(_vm._s(_vm.key))])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                : _vm._e()
+            ])
           ])
         ]
       )
@@ -44065,7 +44155,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "netdisk",
@@ -44086,6 +44175,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         stop: function stop() {
             this.show = false;
+        },
+        rotateShow: function rotateShow() {
+            this.show = !this.show;
         }
     }
 });
@@ -44099,14 +44191,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "netdisk" }, [
-    _c("div", { staticClass: "btn", on: { click: _vm.start } }, [
+    _c("div", { staticClass: "btn", on: { click: _vm.rotateShow } }, [
       _vm._v("查看网盘")
     ]),
     _vm._v(" "),
     _vm.show
       ? _c("div", { staticClass: "wrapper" }, [
           _c("div", { staticClass: "validate video-submit-wrapper" }, [
-            _c("div", { staticClass: "close", on: { click: _vm.stop } }, [
+            _c("div", { staticClass: "close", on: { click: _vm.rotateShow } }, [
               _vm._v("x")
             ]),
             _vm._v(" "),

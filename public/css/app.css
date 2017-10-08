@@ -2858,6 +2858,10 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
 .video-share-container.video-share-container {
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .video-share-wrapper,
@@ -2868,6 +2872,12 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
           box-shadow: 0 3px 10px rgba(0, 0, 0, 0.156863), 0 3px 10px rgba(0, 0, 0, 0.227451);
   border-radius: 2px;
   background: rgba(56, 96, 122, 0.44);
+}
+
+.video-share-wrapper.video-share-wrapper,
+.video-submit-wrapper.video-share-wrapper {
+  margin-bottom: 20px;
+  padding: 30px;
 }
 
 .video-share-wrapper .logo,
@@ -3091,72 +3101,6 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
   background-color: #00b490;
 }
 
-#vip-detail .pay-wrapper .validator,
-#vip-detail .pay-wrapper .netdisk {
-  float: right;
-}
-
-#vip-detail .pay-wrapper .validator.validator,
-#vip-detail .pay-wrapper .netdisk.validator {
-  margin-right: 20px;
-}
-
-#vip-detail .pay-wrapper .validator .btn,
-#vip-detail .pay-wrapper .netdisk .btn {
-  width: 110px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  font-size: 16px;
-  color: #fff;
-  border: 0;
-  border-radius: 3px;
-  background: #00b490;
-}
-
-#vip-detail .pay-wrapper .validator .btn a,
-#vip-detail .pay-wrapper .netdisk .btn a {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
-#vip-detail .pay-wrapper .validator .btn button,
-#vip-detail .pay-wrapper .netdisk .btn button {
-  padding: 10px 36px;
-  font-size: 16px;
-  color: #fff;
-  border: 0;
-  background: transparent;
-}
-
-#vip-detail .pay-wrapper .validator .wrapper,
-#vip-detail .pay-wrapper .netdisk .wrapper {
-  position: absolute;
-  top: 50px;
-}
-
-#vip-detail .pay-wrapper .validator .video-submit-wrapper,
-#vip-detail .pay-wrapper .netdisk .video-submit-wrapper {
-  margin-top: 900px;
-  padding: 10px 40px 30px 20px;
-  width: 230px;
-}
-
-#vip-detail .pay-wrapper .validator .video-submit-btn,
-#vip-detail .pay-wrapper .netdisk .video-submit-btn {
-  margin-top: 12px;
-  height: 38px;
-  line-height: 38px;
-}
-
-#vip-detail .pay-wrapper .validator .close,
-#vip-detail .pay-wrapper .netdisk .close {
-  float: right;
-  margin: -20px -40px 0 0;
-  padding: 20px;
-}
-
 #vip-detail .move {
   position: absolute;
   margin-top: 320px;
@@ -3198,6 +3142,131 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
 #vip-detail .description img {
   margin-top: 20px;
   width: 100%;
+}
+
+.validator,
+.netdisk {
+  float: right;
+}
+
+.validator.validator,
+.netdisk.validator {
+  margin-right: 20px;
+}
+
+.validator .btn,
+.netdisk .btn {
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  background: #00b490;
+}
+
+.validator .btn a,
+.netdisk .btn a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.validator .btn button,
+.netdisk .btn button {
+  padding: 10px 36px;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  background: transparent;
+}
+
+.validator .wrapper,
+.netdisk .wrapper {
+  position: absolute;
+  top: 50px;
+}
+
+.validator .video-submit-wrapper,
+.netdisk .video-submit-wrapper {
+  margin-top: 900px;
+  padding: 10px 40px 30px 20px;
+  width: 230px;
+}
+
+.validator .video-submit-btn,
+.netdisk .video-submit-btn {
+  margin-top: 12px;
+  height: 38px;
+  line-height: 38px;
+}
+
+.validator .close,
+.netdisk .close {
+  float: right;
+  margin: -20px -40px 0 0;
+  padding: 20px;
+}
+
+.download {
+  float: right;
+}
+
+.download .btn {
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  background: #00b490;
+  margin-right: 4px;
+  width: 30px;
+  height: 90px;
+  line-height: 30px;
+  font-size: 12px;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+}
+
+.download .btn a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.download .btn button {
+  padding: 10px 36px;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  background: transparent;
+}
+
+.download .wrapper {
+  position: absolute;
+  top: 90vh;
+  right: 3vw;
+}
+
+.download .video-submit-wrapper {
+  padding: 10px 40px 20px 20px;
+  width: 160px;
+}
+
+.download .video-submit-wrapper .form-wrapper {
+  margin-top: 20px;
+}
+
+.download .close {
+  float: right;
+  margin: -20px -40px 0 0;
+  padding: 20px;
 }
 
 .vip.logo {

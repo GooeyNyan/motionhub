@@ -1,12 +1,11 @@
 <template>
     <div class="netdisk">
-        <div class="btn" @click="start">查看网盘</div>
+        <div class="btn" @click="rotateShow">查看网盘</div>
 
         <div v-if="show" class="wrapper">
             <div class="validate video-submit-wrapper">
-                <div class="close" @click="stop">x</div>
+                <div class="close" @click="rotateShow">x</div>
 
-                <!-- create form -->
                 <div class="form-wrapper">
                     <p>
                         网盘链接：
@@ -40,6 +39,9 @@
             },
             stop() {
                 this.show = false;
+            },
+            rotateShow() {
+                this.show = !this.show;
             }
         }
     }
