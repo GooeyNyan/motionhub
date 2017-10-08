@@ -2878,6 +2878,17 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
 .video-submit-wrapper.video-share-wrapper {
   margin-bottom: 20px;
   padding: 30px;
+  color: #fff;
+}
+
+.video-share-wrapper .info-wrapper,
+.video-submit-wrapper .info-wrapper {
+  margin-bottom: 14px;
+}
+
+.video-share-wrapper .info-wrapper small,
+.video-submit-wrapper .info-wrapper small {
+  color: #aaa;
 }
 
 .video-share-wrapper .logo,
@@ -3271,5 +3282,40 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
 
 .vip.logo {
   margin: 20px 0 0 20px;
+}
+
+.delete-btn {
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  background: #00b490;
+  float: right;
+  background: rgba(255, 102, 102, 0.6);
+}
+
+.delete-btn a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-btn button {
+  padding: 10px 36px;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  background: transparent;
+}
+
+.delete-btn button {
+  display: block;
+  padding: 0;
+  width: 100%;
+  line-height: 41px;
 }
 

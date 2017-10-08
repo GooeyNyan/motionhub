@@ -34,7 +34,7 @@ class ShareController extends Controller
             return redirect()->route('home');
         }
 
-        $shares = Share::select(['name', 'link', 'desc', 'user_name'])->get();
+        $shares = Share::select(['id', 'name', 'link', 'desc', 'user_name'])->get();
 
         return view('share.index', compact('shares'));
     }
@@ -68,5 +68,17 @@ class ShareController extends Controller
         $this->repository->videoShare($data);
 
         return redirect()->route('home');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Share::where('id', $id)->first()->delete();
+        return redirect()->route('share.index');
     }
 }
