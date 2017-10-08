@@ -118,10 +118,14 @@
                         <p>百分之6的之间在吃喝玩乐，只有4%的学习时间。</p>
                         <p>我们愿意为那4%的学习时间服务</p>
                     </div>
-                    <form action="#" method="post" class="subscription-form">
-                        <button class="subscribe-btn">免费订阅</button>
+                    <form action="{{ route('subscribe.store') }}" method="POST" class="subscription-form">
+                        {{ csrf_field() }}
+                        <button class="btn">免费订阅</button>
+                        @if(Auth::check() && Auth::user()->isAdmin())
+                            <a href="{{ route('subscribe.send') }}" class="btn">发送邮件</a>
+                        @endif
                         <div class="text-box">
-                            <input placeholder="输入邮箱，订阅最新视频内容！" class="subscribe-input">
+                            <input type="email" name="email" required="required" placeholder="输入邮箱，订阅最新视频内容！" class="subscribe-input">
                             <img src="{{ asset('images/icon/icon-envelope.png') }}" class="icon-envelope">
                         </div>
                     </form>

@@ -2,23 +2,23 @@
 
 @section('header-btn')
     @if(!\Auth::check())
-        <div class="login-btn">
+        <div class="header-btn">
             <a href="{{ route('login') }}">登 录</a>
         </div>
     @else
         @if(Auth::user()->isAdmin())
-            <div class="share-overview">
+            <div class="header-btn" style="right: 292px;">
                 <a href="{{ route('share.index') }}">分享总览</a>
             </div>
-            <div class="video-submit">
+            <div class="header-btn" style="right: 160px;">
                 <a href="{{ route('video.create') }}">提交视频</a>
             </div>
         @else
-            <div class="video-submit">
+            <div class="header-btn" style="right: 160px;">
                 <a href="{{ route('share.create') }}">分享视频</a>
             </div>
         @endif
-        <div class="login-btn">
+        <div class="header-btn">
             <form action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
                 <button>登 出</button>
@@ -26,6 +26,13 @@
         </div>
     @endif
 @stop
+
+@section('search-form')
+    <form action="{{ route('search') }}" method="GET" class="search-form">
+        <input name="q" class="video-search" placeholder="搜索视频">
+        <img src="{{ asset('images/icon/icon-search.png') }}" class="search-submit">
+    </form>
+@endsection
 
 @section('content')
     @include('layouts._header')
@@ -108,10 +115,15 @@
                         <p>百分之6的之间在吃喝玩乐，只有4%的学习时间。</p>
                         <p>我们愿意为那4%的学习时间服务</p>
                     </div>
-                    <form action="#" method="post" class="subscription-form">
-                        <button class="subscribe-btn">免费订阅</button>
+                    <form action="{{ route('subscribe.store') }}" method="POST" class="subscription-form">
+                        {{ csrf_field() }}
+                        <button class="btn">免费订阅</button>
+                        @if(Auth::user()->isAdmin())
+                            <a href="{{ route('subscribe.send') }}" class="btn">发送邮件</a>
+                        @endif
                         <div class="text-box">
-                            <input placeholder="输入邮箱，订阅最新视频内容！" class="subscribe-input">
+                            <input type="email" name="email" required="required" placeholder="输入邮箱，订阅最新视频内容！"
+                                   class="subscribe-input">
                             <img src="{{ asset('images/icon/icon-envelope.png') }}" class="icon-envelope">
                         </div>
                     </form>

@@ -1198,31 +1198,6 @@ button.swiper-pagination-bullet {
   }
 }
 
-@media screen and (max-width: 1840px) {
-  .subscription-wrapper {
-    -webkit-box-flex: 1 !important;
-        -ms-flex: 1 !important;
-            flex: 1 !important;
-  }
-
-  .subscription-wrapper .subscription {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1620px) {
-  .share .icon-wrapper,
-  .share .desc {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 1599px) {
-  #center .img-wrapper img:last-of-type {
-    display: none;
-  }
-}
-
 .has-success .help-block,
 .has-success .control-label,
 .has-success .radio,
@@ -2185,13 +2160,16 @@ main#index .container-fluid .subscription-wrapper {
 
 main#index .container-fluid .subscription-wrapper .subscription {
   margin: 40px auto;
+  padding-bottom: 30px;
   width: 402px;
-  height: 333px;
   color: #999;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.156863), 0 3px 10px rgba(0, 0, 0, 0.227451);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.156863), 0 3px 10px rgba(0, 0, 0, 0.227451);
   background: #fff;
 }
 
 main#index .container-fluid .subscription-wrapper .subscription .title {
+  margin-bottom: 24px;
   padding-top: 26px;
   text-align: center;
 }
@@ -2202,18 +2180,20 @@ main#index .container-fluid .subscription-wrapper .subscription .title > h2 {
 }
 
 main#index .container-fluid .subscription-wrapper .subscription .desc {
-  margin: 24px 0 0 58px;
+  margin: 0 0 24px 58px;
   line-height: 24px;
   font-size: 14px;
 }
 
-main#index .container-fluid .subscription-wrapper .subscription .subscribe-btn {
+main#index .container-fluid .subscription-wrapper .subscription .btn {
   display: block;
-  margin: 24px auto 0 auto;
+  margin: 0 auto 24px auto;
   width: 297px;
   height: 59px;
+  line-height: 59px;
   font-size: 22px;
   color: #fff;
+  text-align: center;
   border: 0;
   -webkit-box-shadow: -1px 1px 3px rgba(7, 17, 27, 0.3);
           box-shadow: -1px 1px 3px rgba(7, 17, 27, 0.3);
@@ -3317,5 +3297,37 @@ main#center .video-list .video-card .content .btn-wrapper .btn img {
   padding: 0;
   width: 100%;
   line-height: 41px;
+}
+
+@media screen and (max-width: 1840px) {
+  .share {
+    display: none !important;
+  }
+
+  .videos {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 1699px) {
+  .container-fluid {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .subscription-wrapper {
+    display: none;
+  }
+
+  .videos {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1599px) {
+  #center .img-wrapper img:last-of-type {
+    display: none;
+  }
 }
 

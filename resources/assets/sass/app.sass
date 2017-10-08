@@ -8,7 +8,6 @@
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"
 @import "variables"
 @import "mixin"
-@import "media"
 
 // bootstrap
 .has-success .help-block,
@@ -659,27 +658,31 @@ main#index
       flex: 2
       .subscription
         margin: 40px auto
+        padding-bottom: 30px
         width: 402px
-        height: 333px
         color: #999
+        box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451)
         background: #fff
         .title
+          margin-bottom: 24px
           padding-top: 26px
           text-align: center
           & > h2
             font-size: 26px
             font-weight: normal
         .desc
-          margin: 24px 0 0 58px
+          margin: 0 0 24px 58px
           line-height: 24px
           font-size: 14px
-        .subscribe-btn
+        .btn
           display: block
-          margin: 24px auto 0 auto
+          margin: 0 auto 24px auto
           width: 297px
           height: 59px
+          line-height: 59px
           font-size: 22px
           color: #fff
+          text-align: center
           border: 0
           box-shadow: -1px 1px 3px rgba(7, 17, 27, 0.3)
           background: #00bff3
@@ -1271,3 +1274,5 @@ main#center
     padding: 0
     width: 100%
     line-height: 41px
+
+@import "media"
