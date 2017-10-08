@@ -33,5 +33,6 @@ Route::get('/vipVideos', 'APIController@getVIPVideos')->middleware('api');
 Route::get('/vip/name', 'APIController@searchVIPVideoByName')->middleware('api');
 Route::get('/vip/tag', 'APIController@searchVIPVideoByTag')->middleware('api');
 
+Route::get('/users', 'APIController@getUsers')->middleware('api');
 Route::get('/tags', 'APIController@getTags')->middleware('api');
 Route::get('/share', 'APIController@getShares')->middleware('api');

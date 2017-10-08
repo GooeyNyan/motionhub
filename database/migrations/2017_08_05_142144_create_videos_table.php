@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVideosTable extends Migration
 {
@@ -20,6 +20,8 @@ class CreateVideosTable extends Migration
             $table->text('image');
             $table->text('desc')->nullable();
             $table->integer('watched')->default(0);
+            $table->string('download_link')->nullable();
+            $table->string('netdisk_key')->nullable();
             $table->integer('category_id')->index()->default(0);
             $table->timestamps();
         });

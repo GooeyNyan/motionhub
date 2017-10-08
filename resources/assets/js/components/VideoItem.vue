@@ -15,7 +15,8 @@
             playVideo() {
                 eventHub.$emit('video.play', {
                     id: this.video.id,
-                    link: this.video.link
+                    link: this.video.link,
+                    name: this.video.name
                 });
             }
         }

@@ -1,6 +1,11 @@
 <template>
     <div class="video-container" v-if="play" @click="stopPlay">
         <div class="video-watching" ref="videoWrapper" v-html="link"></div>
+        <div class="info">
+            <h3 class="title" v-text="name"></h3>
+
+
+        </div>
     </div>
 </template>
 
@@ -11,12 +16,14 @@
         name: "videoPlayer",
         data: () => ({
             play: false,
-            link: ''
+            link: '',
+            name: ''
         }),
         methods: {
             playVideo(video) {
                 this.play = true;
                 this.link = video.link;
+                this.name = video.name;
                 axios.patch(`${apiRoot}video/watch`, {id: video.id})
             },
             stopPlay() {

@@ -22,6 +22,11 @@ class VIPVideoRepository
         return $video;
     }
 
+    public function getVideoById($id)
+    {
+        return vipVideo::where('id', $id)->first();
+    }
+
     public function normalizeVideoUrl($url)
     {
         $url = preg_replace('/"/', "'", $url);
@@ -58,10 +63,11 @@ class VIPVideoRepository
         return $hours * 60 + $minutes;
     }
 
-    public function keyGenerator($video_id)
+    public function keyGenerator($video_id, $name = null)
     {
         $salt = "Picasso's horse";
-        $username = Auth::user()->name;
+
+        $username = isset($name) ? $name : Auth::user()->name;
 
         $secret = $video_id . $salt . $username;
         $hash = hash('sha256', $secret);

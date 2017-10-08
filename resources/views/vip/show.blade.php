@@ -1,18 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="vip logo">
+        <a href="{{ route('home') }}">
+            <img src="{{ asset('images/logo.png') }}">
+        </a>
+    </div>
+
     <div id="vip-detail">
-        <span class="head">{{ $video->name }}</span>
+        <h2 class="head">{{ $video->name }}</h2>
         <div class="page">
             <div class="video">
                 {!! $video->link !!}
             </div>
             <div class="right-message">
-                <span class="notice">内容信息</span>
-                <hr>
-                <div class="circle"></div>
-
-                <span class="grade">&nbsp;&nbsp;等级：{{ $video->rank === 1 ? '基本' : ($video->rank === 2 ? '中级' : '高级') }}</span><br><br>
+                <p class="notice">内容信息</p>
+                <div class="level">
+                    <div class="circle"></div>
+                    <span class="grade">等级：{{ $video->rank === 1 ? '基本' : ($video->rank === 2 ? '中级' : '高级') }}</span>
+                </div>
                 <img src={{ asset("images/icon/icon-time.png") }} class="cd"><span
                         class="time">{{ floor($video->duration / 60)  }}小时{{ $video->duration % 60 }}分钟</span>
                 <div class="page-end">
@@ -24,17 +30,21 @@
                 </div>
             </div>
         </div>
-        <span class="price">￥{{ $video->price }}</span><br>
 
-        @if(!Auth::user()->permitted($video->id))
-            <key-validator csrf="{{ csrf_token() }}"></key-validator>
-        @else
-            <key-validator csrf="{{ csrf_token() }}"></key-validator>
-        @endif
+        <div class="pay-wrapper">
+            <p class="price">￥{{ $video->price }}</p>
 
-        <button class="buy">
-            <a href="{{ $video->tb_link }}" target="_blank">现在购买</a>
-        </button>
+            @if(Auth::check() && Auth::user()->permitted($video->id))
+                <netdisk disk="{{ $video->download_link }}" password="{{ $video->netdisk_key }}"></netdisk>
+            @else
+                <button class="buy">
+                    <a href="{{ $video->tb_link }}" target="_blank">现在购买</a>
+                </button>
+
+                <key-validator csrf="{{ csrf_token() }}"></key-validator>
+            @endif
+        </div>
+
         <span class="about">关于内容</span>
         <div class="description">
             {!! $video->desc !!}
@@ -46,7 +56,7 @@
     <style>
         body {
             background: url("../images/head.png") no-repeat;
-            background-size: 100%;
+            background-size: 100% 900px;
             width: 100%;
             height: auto;
         }

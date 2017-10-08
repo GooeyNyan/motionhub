@@ -1,12 +1,22 @@
 <template>
     <div class="netdisk">
-        <div class="netdisk-btn" @click="start">查看网盘</div>
+        <div class="btn" @click="start">查看网盘</div>
 
-        <div v-if="show" class="netdisk-wrapper">
-            <div class="netdisk video-submit-wrapper">
+        <div v-if="show" class="wrapper">
+            <div class="validate video-submit-wrapper">
                 <div class="close" @click="stop">x</div>
 
-                <p></p>
+                <!-- create form -->
+                <div class="form-wrapper">
+                    <p>
+                        网盘链接：
+                        <small><a :href="disk" target="_blank">百度网盘</a></small>
+                    </p>
+                    <p>
+                        密码：
+                        <small>{{ password }}</small>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -15,9 +25,10 @@
 <script>
     export default {
         name: "netdisk",
+        props: ['disk', 'password'],
         data: () => ({
             rootURL,
-            show: false
+            show: false,
         }),
         methods: {
             getVideoId() {

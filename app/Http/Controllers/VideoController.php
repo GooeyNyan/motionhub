@@ -28,7 +28,7 @@ class VideoController extends Controller
      */
     public function __construct(VideoRepository $videoRepository)
     {
-        $this->middleware('auth')->only('store', 'update', 'edit', 'destroy');
+        $this->middleware(['auth', 'admin'])->only('create', 'store');
         $this->repository = $videoRepository;
     }
 
@@ -39,10 +39,6 @@ class VideoController extends Controller
      */
     public function create()
     {
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->route('home');
-        }
-
         $categories = Category::select('id', 'name')->get();
 
         return view('videos.create', compact('categories'));
@@ -54,10 +50,6 @@ class VideoController extends Controller
      */
     public function store(StoreVideoRequest $request)
     {
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->route('home');
-        }
-
         $link = $this->repository->normalizeVideoUrl($request->get('link'));
         $image = $this->repository->normalizeImageUrl($request->get('image'));
         $tags = $this->repository->normalizeTag($request->get('tags'));

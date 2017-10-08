@@ -26,6 +26,7 @@ Vue.component('vipVideoItem', require('./components/VIPVideoItem.vue'));
 Vue.component('vipVideos', require('./components/VIPVideos.vue'));
 Vue.component('vipSearch', require('./components/VIPSearch.vue'));
 Vue.component('keyValidator', require('./components/KeyValidator.vue'));
+Vue.component('netdisk', require('./components/Netdisk.vue'));
 
 const app = new Vue({
     el: '#app'

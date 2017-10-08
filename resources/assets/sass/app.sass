@@ -831,26 +831,31 @@ main#center
             color: #707070
             img
               margin-right: 4px
-        .buy
+        .btn-wrapper
           display: flex
-          position: absolute
-          bottom: 26px
-          right: 32px
-          width: 88px
+          margin-top: 40px
+          width: 100%
           height: 34px
-          justify-content: space-between
-          align-items: center
-          line-height: 34px
-          font-size: 19px
-          font-family: SimHei, serif
-          color: #fff
-          text-align: left
-          border: 0
-          border-radius: 3px
-          background: #0099ff
-          img
-            margin-left: 3px
-            vertical-align: sub
+          justify-content: flex-end
+          &.active
+            justify-content: space-around
+          .btn
+            width: 88px
+            height: 34px
+            line-height: 34px
+            font-size: 16px
+            font-family: SimHei, serif
+            color: #fff
+            text-align: center
+            border: 0
+            border-radius: 3px
+            background: #0099ff
+            a
+              display: block
+              width: 100%
+            img
+              margin-left: 3px
+              vertical-align: sub
 
 .vip-videos
   margin: 0 auto
@@ -1013,6 +1018,7 @@ main#center
   background-size: cover
   &.video-share-container
     justify-content: space-around
+
 .video-share-wrapper, .video-submit-wrapper
   padding: 0 100px 50px 100px
   width: 501px
@@ -1032,6 +1038,9 @@ main#center
         margin-bottom: 6px
     .edui-editor
       width: 522px !important
+    .key
+      font-size: 24px
+      text-align: center
 
 .button-wrapper
   display: flex
@@ -1061,10 +1070,24 @@ main#center
   justify-content: center
   align-items: center
   background: rgba(0, 0, 0, 0.3)
+  .info
+    margin-top: -4px
+    width: 70px
+    height: 810px
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .156863), 0 3px 10px rgba(0, 0, 0, .227451)
+    background: #fff
+    h3
+      margin: 16px 0 0 6px
+      padding-bottom: 6px
+      width: 26px
+      font-size: 20px
+      writing-mode: vertical-lr
+      border-top: 3px solid lightseagreen
+      border-bottom: 3px solid lightseagreen
 
 #vip-detail
-  width: 60%
-  margin-left: 20%
+  width: 1100px
+  margin: 0 auto
   .head
     position: relative
     top: 200px
@@ -1075,7 +1098,7 @@ main#center
   .page
     position: relative
     background-color: white
-    width: 100%
+    width: 1060px
     height: 420px
     margin-top: -30px
     top: 250px
@@ -1083,7 +1106,6 @@ main#center
     border-radius: 3px
     box-shadow: 0 0 30px #8F8F8F
   .video
-    background-color: #8F8F8F
     width: 60%
     height: 420px
     float: left
@@ -1094,22 +1116,26 @@ main#center
     height: 100%
     width: 30%
   .notice
+    margin-bottom: 10px
     font-size: 20px
     color: black
+    border-bottom: 1px solid #9a9a9a
   .use
     font-size: 20px
     color: black
-  .circle
-    background-color: #33b6a0
-    width: 15px
-    height: 15px
-    margin-top: 4px
-    border-radius: 50%
-    float: left
-  .grade
-    color: #33b6a0
-    font-size: 15px
-    margin-left: 5px
+  .level
+    margin-bottom: 10px
+    .circle
+      background-color: #33b6a0
+      width: 15px
+      height: 15px
+      margin-top: 4px
+      border-radius: 50%
+      float: left
+    .grade
+      color: #33b6a0
+      font-size: 15px
+      margin-left: 5px
   .ae
     width: 50px
     height: auto
@@ -1125,25 +1151,45 @@ main#center
     font-size: 13px
   .page-end
     margin-top: 100px
-  .price
-    position: absolute
-    margin-top: 280px
-    right: 18%
-    font-size: 26px
-    color: #737373
-  .buy
-    position: absolute
-    margin-top: 320px
-    right: 17%
-    background-color: #34d69f
-    text-align: center
-    font-size: 15px
-    width: 130px
-    height: 40px
-    border-radius: 3px
-    border: 0
-    color: white
+  .pay-wrapper
     float: right
+    margin-top: 300px
+    .price
+      font-size: 26px
+      color: #737373
+      text-align: right
+    .buy
+      float: right
+      right: 17%
+      width: 130px
+      height: 40px
+      color: white
+      font-size: 15px
+      text-align: center
+      border: 0
+      border-radius: 3px
+      background-color: #00b490
+    .validator, .netdisk
+      float: right
+      &.validator
+        margin-right: 20px
+      .btn
+        @include button
+      .wrapper
+        position: absolute
+        top: 50px
+      .video-submit-wrapper
+        margin-top: 900px
+        padding: 10px 40px 30px 20px
+        width: 230px
+      .video-submit-btn
+        margin-top: 12px
+        height: 38px
+        line-height: 38px
+      .close
+        float: right
+        margin: -20px -40px 0 0
+        padding: 20px
   .move
     position: absolute
     margin-top: 320px
@@ -1178,23 +1224,6 @@ main#center
     margin-top: 20px
     width: 100%
 
-.validator
-  position: absolute
-  top: 830px
-  right: 480px
-  .validator-btn
-    @include button
-  .validator-wrapper
-    position: absolute
-    top: 50px
-  .video-submit-wrapper
-    padding: 10px 40px 30px 20px
-    width: 230px
-  .video-submit-btn
-    margin-top: 12px
-    height: 38px
-    line-height: 38px
-  .close
-    float: right
-    margin: -20px -40px 0 0
-    padding: 20px
+.vip
+  &.logo
+    margin: 20px 0 0 20px

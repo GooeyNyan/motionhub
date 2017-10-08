@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVideoRequest;
 use App\Repositories\VIPVideoRepository;
+use App\User;
 use App\vipVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class VIPVideoController extends Controller
 
     public function __construct(VIPVideoRepository $Repository)
     {
-        $this->middleware('auth')->only('store', 'update', 'edit', 'destroy');
+        $this->middleware('admin')->only('create', 'store', 'update', 'edit', 'destroy');
         $this->repository = $Repository;
     }
 
@@ -36,10 +37,6 @@ class VIPVideoController extends Controller
      */
     public function create()
     {
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->route('home');
-        }
-
         return view('vip.create');
     }
 
@@ -51,10 +48,6 @@ class VIPVideoController extends Controller
      */
     public function store(StoreVideoRequest $request)
     {
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->route('home');
-        }
-
         $duration = $this->repository->normalizeDuration($request->get('duration'));
         $image = $this->repository->normalizeImageUrl($request->get('image'));
         $link = $this->repository->normalizeVideoUrl($request->get('link'));
@@ -85,7 +78,7 @@ class VIPVideoController extends Controller
      */
     public function show($id)
     {
-        $video = vipVideo::where('id', $id)->first();
+        $video = $this->repository->getVideoById($id);
 
         return view('vip.show', compact('video'));
     }
@@ -98,19 +91,43 @@ class VIPVideoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = $this->repository->getVideoById($id);
+        $video->duration = floor($video->duration / 60) . ":" . $video->duration % 60;
+
+        return view('vip.edit', compact('video'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param StoreVideoRequest|Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreVideoRequest $request, $id)
     {
-        //
+        $video = $this->repository->getVideoById($id);
+
+        $duration = $this->repository->normalizeDuration($request->get('duration'));
+        $image = $this->repository->normalizeImageUrl($request->get('image'));
+        $link = $this->repository->normalizeVideoUrl($request->get('link'));
+        $tags = $this->repository->normalizeTag($request->get('tags'));
+
+        $video->update([
+            'name' => $request->get('name'),
+            'rank' => $request->get('rank'),
+            'duration' => $duration,
+            'price' => $request->get('price'),
+            'desc' => $request->get('desc'),
+            'image' => $image,
+            'link' => $link,
+            'tb_link' => $request->get('tb_link'),
+            'download_link' => $request->get('download'),
+            'user_id' => Auth::user()->id
+        ]);
+        $video->tags()->sync($tags);
+
+        return redirect()->route('vip.index');
     }
 
     /**
@@ -139,7 +156,7 @@ class VIPVideoController extends Controller
     {
         $video_id = $request->get('video_id');
 
-        $video = vipVideo::where('id', $video_id)->first();
+        $video = $this->repository->getVideoById($video_id);
         $key = $this->repository->keyGenerator($video_id);
         $input = $request->get('key');
 
@@ -149,5 +166,20 @@ class VIPVideoController extends Controller
         } else {
             return back();
         }
+    }
+
+    public function keyGenerate($id)
+    {
+        return view('vip.key.create', compact('id'));
+    }
+
+    public function key($id, Request $request)
+    {
+        $user_id = $request->get('name');
+        $name = User::where('id', $user_id)->first()->name;
+
+        $key = $this->repository->keyGenerator($id, $name);
+
+        return view('vip.key.show', compact('key'));
     }
 }

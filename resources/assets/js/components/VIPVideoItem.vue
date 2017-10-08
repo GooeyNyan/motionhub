@@ -21,18 +21,26 @@
                     <span class="time"> {{ duration() }}</span>
                 </div>
             </div>
-            <button class="buy">
-                <a :href="video.tb_link" target="_blank">
-                    ￥{{ video.price }}<img :src="rootURL + 'images/icon/icon-shopcart.png'" width="25" height="22">
-                </a>
-            </button>
+            <div class="btn-wrapper" :class="{ active: admin == 'true' }">
+                <button v-if="admin == 'true'" class="btn edit">
+                    <a :href="rootURL + 'vip/' + video.id + '/edit'">编辑</a>
+                </button>
+                <button v-if="admin == 'true'" class="btn key">
+                    <a :href="'/vip/' + video.id + '/key'" target="_blank">激活码</a>
+                </button>
+                <button class="btn buy">
+                    <a :href="video.tb_link" target="_blank">
+                        ￥{{ video.price }}<img :src="rootURL + 'images/icon/icon-shopcart.png'" width="25" height="22">
+                    </a>
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['video', 'permitted'],
+        props: ['video', 'admin'],
         name: "videoItem",
         data: () => ({
             rootURL,

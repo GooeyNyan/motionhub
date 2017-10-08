@@ -1,8 +1,8 @@
 <template>
     <div class="validator">
-        <div class="validator-btn" @click="start">验证激活</div>
+        <div class="btn" @click="start">验证激活</div>
 
-        <div v-if="show" class="validator-wrapper">
+        <div v-if="show" class="wrapper">
             <div class="validate video-submit-wrapper">
                 <div class="close" @click="stop">x</div>
 

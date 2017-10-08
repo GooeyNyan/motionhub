@@ -83,7 +83,11 @@
             </button>
         </div>
 
-        <vip-videos></vip-videos>
+        @if(Auth::check())
+            <vip-videos admin="{{ Auth::user()->isAdmin() == "1" ? 'true' : 'false' }}"></vip-videos>
+        @else
+            <vip-videos></vip-videos>
+        @endif
 
     </main>
 @endsection

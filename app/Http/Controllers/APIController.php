@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Share;
 use App\Tag;
+use App\User;
 use App\Video;
 use App\vipVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function PHPSTORM_META\map;
 
 class APIController extends Controller
 {
+
+    // User api
 
 //  video api
     /**
@@ -143,6 +147,22 @@ class APIController extends Controller
         return $searchByTag;
     }
 
+
+    /**
+     * get relevant tag of the video
+     *
+     * @param Request $request
+     * @return string
+     */
+    public function getUsers(Request $request)
+    {
+        $users = User::select(['id', 'name'])
+            ->where('name', 'like', '%' . $request->query('name') . "%")
+            ->get();
+
+        return $users;
+    }
+
     /**
      * get relevant tag of the video
      *
@@ -165,10 +185,12 @@ class APIController extends Controller
             ->paginate($request->query('amount'));
     }
 
-    private function isAdmin()
+    public function isAdmin()
     {
-        if (!Auth::user()->isAdmin()) {
-            return redirect()->route('home');
+        if (Auth::user()->isAdmin()) {
+            return true;
         }
+
+        return false;
     }
 }
