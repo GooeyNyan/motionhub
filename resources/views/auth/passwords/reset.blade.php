@@ -1,77 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Reset Password</div>
+    <div class="register-container">
+        <div class="register_wrapper">
+            <!-- logo -->
+            <div class="logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('images/logo-2.png') }}" alt="motionhub logo">
+                </a>
+            </div>
 
-                    <div class="panel-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+            <!-- register form -->
+            <div class="form-wrapper">
+                <form action="{{ route('password.request') }}" method="POST">
+                    {{ csrf_field() }}
 
-                        <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                            {{ csrf_field() }}
+                    <input type="hidden" name="token" value="{{ $token }}">
 
-                            <input type="hidden" name="token" value="{{ $token }}">
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ $email or old('email') }}" required autofocus>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
+                    <div class="register-control{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label>
+                            <span class="desc name">邮箱</span>
+                            <input type="email" name="email" value="{{ old('email') }}" class="register-input" required>
+                        </label>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
+                        @endif
+                    </div>
+                    <div class="register-control{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <label>
+                            <span class="desc psw">密码</span>
+                            <input type="password" name="password" minlength='6' maxlength='100' class="register-input" required>
+                        </label>
+                        @if ($errors->has('password'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required>
-
-                                    @if ($errors->has('password_confirmation'))
-                                        <span class="help-block">
+                        @endif
+                    </div>
+                    <div class="register-control{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <label>
+                            <span class="desc psw">确认密码</span>
+                            <input type="password" name="password_confirmation" minlength='6' maxlength='100' class="register-input" required>
+                        </label>
+                        @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Reset Password
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                            @endif
                     </div>
-                </div>
+
+                    <div class="button-wrapper">
+                        <button class="register_button">重置密码</button>
+                    </div>
+                </form>
+
+
             </div>
         </div>
     </div>

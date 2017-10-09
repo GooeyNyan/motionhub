@@ -17,6 +17,6 @@ return [
     'reset' => 'Your password has been reset!',
     'sent' => '重置链接已发送到相应邮箱!',
     'token' => 'This password reset token is invalid.',
-    'user' => "无法找到对应邮箱orz...",
+    'user' => "无法找到对应邮箱...",
 
 ];

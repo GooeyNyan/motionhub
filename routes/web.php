@@ -13,8 +13,11 @@
 Auth::routes();
 Route::get('/email/verify/{token}', 'EmailController@verify')->name('email.verify');
 
-// hoem page
+// home page
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return redirect()->route('home');
+});
 Route::get('/#{category}', 'HomeController@index')->name('category');
 
 // video

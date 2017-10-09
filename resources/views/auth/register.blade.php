@@ -39,7 +39,7 @@
                     <div class="register-control{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label>
                             <span class="desc psw">密码</span>
-                            <input type="password" name="password" class="register-input" required>
+                            <input type="password" name="password" minlength='6' maxlength='100' class="register-input" required>
                         </label>
                         @if ($errors->has('password'))
                             <span class="help-block">
@@ -50,7 +50,7 @@
                     <div class="register-control{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label>
                             <span class="desc psw">确认密码</span>
-                            <input type="password" name="password_confirmation" class="register-input" required>
+                            <input type="password" name="password_confirmation" minlength='6' maxlength='100' class="register-input" required>
                         </label>
                     </div>
 

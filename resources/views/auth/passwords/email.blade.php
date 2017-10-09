@@ -12,7 +12,7 @@
 
             <!-- register form -->
             <div class="form-wrapper">
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ route('password.email') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="register-control{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label>
