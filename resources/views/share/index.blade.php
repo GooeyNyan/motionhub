@@ -35,7 +35,7 @@
                     <form action="{{ route('share.destroy', $share->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button>删除视频</button>
+                        <button>删除</button>
                     </form>
                 </div>
             </div>

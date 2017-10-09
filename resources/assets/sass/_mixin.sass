@@ -1,11 +1,11 @@
 @mixin border-bottom()
-  border-bottom: 2px solid $border-bottom-color
+  border-bottom: 0.1042vw solid $border-bottom-color
 
 @mixin video-items()
-  margin: 68px 0 0 11px
-  width: 261px
-  height: 172px
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)
+  margin: 3.5417vw 0 0 0.5729vw
+  width: 13.5937vw
+  height: 8.9583vw
+  box-shadow: 0.2604vw 0.2604vw 0.5208vw rgba(0, 0, 0, 0.5)
   background: $video-item-color
   img
     width: 100%
@@ -14,33 +14,33 @@
 @mixin header()
   .header
     position: relative
-    height: 62px
+    height: 3.2292vw
     @include border-bottom
     .title
-      line-height: 62px
-      font-size: 28px
+      line-height: 3.2292vw
+      font-size: 1.4583vw
       color: $content-title-color
     .pagination
       position: absolute
       right: 0
-      top: 12px
+      top: 0.6250vw
       font-size: 0
       .prev, .next
         display: inline-block
-        width: 53px
-        height: 39px
-        line-height: 48px
+        width: 2.7604vw
+        height: 2.0313vw
+        line-height: 2.5vw
         text-align: center
         box-sizing: border-box
-        border: 1px solid $pagination-btn-border-color
-        border-radius: 2px
+        border: 0.0521vw solid $pagination-btn-border-color
+        border-radius: 0.1042vw
       .next
-        margin-left: 14px
+        margin-left: 0.7292vw
 
 @mixin video-list()
   .content
     display: flex
-    padding: 46px 0 120px 0
+    padding: 2.3958vw 0 6.25vw 0
     flex-wrap: wrap
     @include border-bottom
     .video-item
@@ -49,22 +49,22 @@
         margin-top: 0
 
 @mixin button()
-  width: 110px
-  height: 40px
-  line-height: 40px
+  width: 5.7292vw
+  height: 2.0833vw
+  line-height: 2.0833vw
   text-align: center
-  font-size: 16px
+  font-size: 0.8333vw
   color: #fff
   border: 0
-  border-radius: 3px
+  border-radius: 0.1563vw
   background: $button-color
   a
     display: inline-block
     width: 100%
     height: 100%
   button
-    padding: 10px 36px
-    font-size: 16px
+    padding: 0.5208vw 1.875vw
+    font-size: 0.8333vw
     color: #fff
     border: 0
     background: rgba(0, 0, 0, 0)
@@ -75,14 +75,17 @@
       position: relative
       .title
         position: absolute
-        width: calc(100% - 44px)
+        width: 11.3021vw
         bottom: 0
-        padding: 0 22px
-        line-height: 40px
-        font-size: 14px
+        padding: 0 1.1458vw
+        line-height: 2.0833vw
+        font-size: 0.7292vw
         color: $video-title-color
         text-overflow: ellipsis
         white-space: nowrap
         overflow: hidden
-        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3)
+        box-shadow: 0 0.2604vw 0.2604vw rgba(0, 0, 0, 0.3)
         background: rgba(0, 0, 0, 0.3)
+      &.main
+        .title
+          width: 25.6771vw

@@ -7,21 +7,21 @@
         </div>
     @else
         @if(Auth::user()->isAdmin())
-            <div class="header-btn" style="right: 292px;">
+            <div class="header-btn" style="right: 15.2083vw;">
                 <a href="{{ route('share.index') }}">分享总览</a>
             </div>
-            <div class="header-btn" style="right: 160px;">
+            <div class="header-btn" style="right: 8.3333vw;">
                 <a href="{{ route('video.create') }}">提交视频</a>
             </div>
         @else
-            <div class="header-btn" style="right: 160px;">
+            <div class="header-btn" style="right: 8.3333vw;">
                 <a href="{{ route('share.create') }}">分享视频</a>
             </div>
         @endif
         <div class="header-btn">
             <form action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
-                <button>登 出</button>
+                <button class="logout">登 出</button>
             </form>
         </div>
     @endif
