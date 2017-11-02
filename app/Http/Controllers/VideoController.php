@@ -58,8 +58,13 @@ class VideoController extends Controller
             'name' => $request->get('name'),
             'link' => $link,
             'image' => $image,
-            'desc' => $request->get('desc')
+            'desc' => $request->get('desc'),
+            'category_id' => $request->get('category'),
+            'download_link' => $request->get('download'),
+            'netdisk_key' => $request->get('netdisk_key'),
         ];
+
+        dd($data);
 
         $this->repository->createVideo($data, $tags);
 

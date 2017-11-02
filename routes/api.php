@@ -37,3 +37,13 @@ Route::get('/vip/tag', 'APIController@searchVIPVideoByTag')->middleware('api');
 Route::get('/users', 'APIController@getUsers')->middleware('api');
 Route::get('/tags', 'APIController@getTags')->middleware('api');
 Route::get('/share', 'APIController@getShares')->middleware('api');
+
+Route::get('/test', function(Request $request) {
+    $package = $request->get('package');
+    $packages = DB::table('package')
+        ->when($package !== '-1', function($query) use ($package) {
+            return $query->where('id', $package);
+        })
+        ->get();
+    return $packages;
+});

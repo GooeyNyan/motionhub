@@ -86,7 +86,7 @@ class RegisterController extends Controller
         $template = new SendCloudTemplate('motionhub_register', $data);
 
         Mail::raw($template, function ($message) use ($user) {
-            $message->from('Sanjwinds@gmail.com', 'GooeyNyan');
+            $message->from('picasso@motionhub.cn', 'motionhub');
 
             $message->to($user->email);
         });

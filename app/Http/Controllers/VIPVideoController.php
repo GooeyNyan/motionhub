@@ -62,7 +62,8 @@ class VIPVideoController extends Controller
             'image' => $image,
             'link' => $link,
             'tb_link' => $request->get('tb_link'),
-            'download' => $request->get('download'),
+            'download_link' => $request->get('download'),
+            'netdisk_key' => $request->get('netdisk_key'),
             'user_id' => Auth::user()->id
         ];
 
@@ -123,6 +124,7 @@ class VIPVideoController extends Controller
             'link' => $link,
             'tb_link' => $request->get('tb_link'),
             'download_link' => $request->get('download'),
+            'netdisk_key' => $request->get('netdisk_key'),
             'user_id' => Auth::user()->id
         ]);
         $video->tags()->sync($tags);

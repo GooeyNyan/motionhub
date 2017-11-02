@@ -41,7 +41,7 @@ class VIPVideoRepository
         $match = [];
         preg_match_all('/uploads\/image\/\d{4}\/\d{2}\/\d{2}\/\w+.(jpg?g|gif|svg|png|bmp)/', $get, $match);
 
-        return $match[0][0];
+        return 'storage/' . $match[0][0];
     }
 
     public function normalizeTag($tags)

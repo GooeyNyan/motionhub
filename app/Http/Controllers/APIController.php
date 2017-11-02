@@ -53,10 +53,21 @@ class APIController extends Controller
      */
     public function getVideos(Request $request)
     {
+        $type_id = self::getCategoryId($request->query('type'));
+
         return DB::table('videos')
             ->select('id', 'name', 'link', 'image')
             ->orderBy('watched', 'desc')
+            ->where('category_id', '=', $type_id)
             ->paginate($request->query('amount'));
+    }
+
+    private function getCategoryId($type) {
+        return DB::table('categories')
+            ->where('name', 'like', $type)
+            ->select('id')
+            ->first()
+            ->id;
     }
 
     public function getVIPVideos()

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class vipVideo extends Model
 {
-    protected $fillable = ['name', 'rank', 'duration', 'price', 'desc', 'image', 'link', 'tb_link', 'download', 'user_id'];
+    protected $fillable = ['name', 'rank', 'duration', 'price', 'desc', 'image', 'link', 'tb_link', 'download_link', 'netdisk_key', 'user_id'];
 
     public function user()
     {
