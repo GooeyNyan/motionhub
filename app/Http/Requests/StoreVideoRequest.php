@@ -29,7 +29,6 @@ class StoreVideoRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'link' => 'required',
         ];
     }
 
@@ -42,7 +41,6 @@ class StoreVideoRequest extends FormRequest
     {
         return [
             'name.required' => '标题不能为空',
-            'link.required' => '视频链接不能为空',
         ];
     }
 }

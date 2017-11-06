@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'vip');
+//        $this->middleware('auth')->except('index');
     }
 
     /**

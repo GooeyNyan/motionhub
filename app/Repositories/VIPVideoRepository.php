@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 use App\Tag;
 use App\vipVideo;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
 
 class VIPVideoRepository
@@ -34,6 +35,13 @@ class VIPVideoRepository
         $url = preg_replace("/width='(\d+)'/", "width='685'", $url);
 
         return $url;
+    }
+
+    public function normalizeBilibiliUrl($a_id, $c_id)
+    {
+        return '<iframe width="1440" height="810" src="https://www.bilibili.com/html/html5player.html?cid=' . $c_id . '&aid=' . $a_id . '&pre_ad=0"
+    frameborder="0" gesture="media" allowfullscreen>
+  </iframe>';
     }
 
     public function normalizeImageUrl($get)
@@ -75,5 +83,25 @@ class VIPVideoRepository
         $key = substr($hash, $start_index, 6);
 
         return $key;
+    }
+
+    public function getBilibiliCid($a_id)
+    {
+        $client = new \GuzzleHttp\Client();
+        try {
+            // 哔哩哔哩视频列表接口
+            $response = $client->get('http://www.bilibili.com/widget/getPageList?aid=' . $a_id);
+            $cid = \GuzzleHttp\json_decode($response->getBody())[0]->cid;
+            return $cid;
+        } catch (RequestException $e1) {
+            try {
+                // ⑨BiLiBiLi
+                $response = $client->get('http://9bl.bakayun.cn/API/GetVideoInfo.php?aid=' . $a_id . '&p=1&type=json');
+                $cid = \GuzzleHttp\json_decode($response->getBody())->Result->VideoInfo->Cid;
+                return $cid;
+            } catch (RequestException $e2) {
+                return "cid is not found";
+            }
+        }
     }
 }

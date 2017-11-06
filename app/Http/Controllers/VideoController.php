@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreVideoRequest;
 use App\Repositories\VideoRepository;
-use App\Tag;
-use App\Video;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class VideoController
@@ -50,7 +46,16 @@ class VideoController extends Controller
      */
     public function store(StoreVideoRequest $request)
     {
-        $link = $this->repository->normalizeVideoUrl($request->get('link'));
+        // handle video url
+        if ($request->get('link')) {
+            $link = $this->repository->normalizeVideoUrl($request->get('link'));
+        } else if ($request->get('avId')){
+            $a_id = $request->get('avId');
+            preg_match('/\d+/', $a_id, $a_id);
+            $a_id = $a_id[0];
+            $c_id = $this->repository->getBilibiliCid($a_id);
+            $link = $this->repository->normalizeBilibiliUrl($a_id, $c_id);
+        }
         $image = $this->repository->normalizeImageUrl($request->get('image'));
         $tags = $this->repository->normalizeTag($request->get('tags'));
 
@@ -63,8 +68,6 @@ class VideoController extends Controller
             'download_link' => $request->get('download'),
             'netdisk_key' => $request->get('netdisk_key'),
         ];
-
-        dd($data);
 
         $this->repository->createVideo($data, $tags);
 

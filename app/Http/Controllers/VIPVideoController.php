@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVideoRequest;
 use App\Repositories\VIPVideoRepository;
 use App\User;
-use App\vipVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,9 +47,19 @@ class VIPVideoController extends Controller
      */
     public function store(StoreVideoRequest $request)
     {
+        // handle video url
+        if ($request->get('link')) {
+            $link = $this->repository->normalizeVideoUrl($request->get('link'));
+        } else if ($request->get('avId')){
+            $a_id = $request->get('avId');
+            preg_match('/\d+/', $a_id, $a_id);
+            $a_id = $a_id[0];
+            $c_id = $this->repository->getBilibiliCid($a_id);
+            $link = $this->repository->normalizeBilibiliUrl($a_id, $c_id);
+        }
+
         $duration = $this->repository->normalizeDuration($request->get('duration'));
         $image = $this->repository->normalizeImageUrl($request->get('image'));
-        $link = $this->repository->normalizeVideoUrl($request->get('link'));
         $tags = $this->repository->normalizeTag($request->get('tags'));
 
         $data = [
@@ -107,11 +116,21 @@ class VIPVideoController extends Controller
      */
     public function update(StoreVideoRequest $request, $id)
     {
+        // handle video url
+        if ($request->get('link')) {
+            $link = $this->repository->normalizeVideoUrl($request->get('link'));
+        } else if ($request->get('avId')){
+            $a_id = $request->get('avId');
+            preg_match('/\d+/', $a_id, $a_id);
+            $a_id = $a_id[0];
+            $c_id = $this->repository->getBilibiliCid($a_id);
+            $link = $this->repository->normalizeBilibiliUrl($a_id, $c_id);
+        }
+
         $video = $this->repository->getVideoById($id);
 
         $duration = $this->repository->normalizeDuration($request->get('duration'));
         $image = $this->repository->normalizeImageUrl($request->get('image'));
-        $link = $this->repository->normalizeVideoUrl($request->get('link'));
         $tags = $this->repository->normalizeTag($request->get('tags'));
 
         $video->update([
