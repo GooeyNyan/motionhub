@@ -52,9 +52,10 @@ class VIPVideoController extends Controller
             $link = $this->repository->normalizeVideoUrl($request->get('link'));
         } else if ($request->get('avId')){
             $a_id = $request->get('avId');
-            preg_match('/\d+/', $a_id, $a_id);
-            $a_id = $a_id[0];
-            $link = $this->repository->normalizeBilibiliUrl($a_id);
+            preg_match_all("/(\d+)/", $a_id, $matches);
+            $a_id = $matches[0][0];
+            $page_id = isset($matches[0][1]) ? $matches[0][1] : "1";
+            $link = $this->repository->normalizeBilibiliUrl($a_id, $page_id);
         }
 
         $duration = $this->repository->normalizeDuration($request->get('duration'));
@@ -120,10 +121,10 @@ class VIPVideoController extends Controller
             $link = $this->repository->normalizeVideoUrl($request->get('link'));
         } else if ($request->get('avId')){
             $a_id = $request->get('avId');
-            preg_match('/\d+/', $a_id, $a_id);
-            $a_id = $a_id[0];
-            $c_id = $this->repository->getBilibiliCid($a_id);
-            $link = $this->repository->normalizeBilibiliUrl($a_id, $c_id);
+            preg_match_all("/(\d+)/", $a_id, $matches);
+            $a_id = $matches[0][0];
+            $page_id = isset($matches[0][1]) ? $matches[0][1] : "1";
+            $link = $this->repository->normalizeBilibiliUrl($a_id, $page_id);
         }
 
         $video = $this->repository->getVideoById($id);

@@ -37,7 +37,7 @@
 
                     <div class="form-group {{ $errors->has('avId') ? 'has-error' : ''}}">
                         <label for="avId">B站av号</label>
-                        <input name="avId" class="form-control" placeholder="或者提交B站av号" id="avId">
+                        <input name="avId" class="form-control" placeholder="或者提交B站av号、分p号，如：av1255186,p2" id="avId">
                         @if ($errors->has('avId'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('avId') }}</strong>

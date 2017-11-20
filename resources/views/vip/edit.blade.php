@@ -48,10 +48,20 @@
 
                     <div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}">
                         <label for="link">视频链接</label>
-                        <input name="link" class="form-control" value="{{ $video->link }}" placeholder="视频链接" id="link" required="required">
+                        <input name="link" class="form-control" value="{{ $video->link }}" placeholder="视频链接" id="link">
                         @if ($errors->has('link'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('link') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group {{ $errors->has('avId') ? 'has-error' : ''}}">
+                        <label for="avId">B站av号</label>
+                        <input name="avId" class="form-control" placeholder="或者提交B站av号、分p号，如：av=1255186,p=2" id="avId">
+                        @if ($errors->has('avId'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('avId') }}</strong>
                             </span>
                         @endif
                     </div>

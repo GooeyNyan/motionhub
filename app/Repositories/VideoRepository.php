@@ -39,9 +39,9 @@ class VideoRepository
         return $url;
     }
 
-    public function normalizeBilibiliUrl($a_id)
+    public function normalizeBilibiliUrl($a_id, $page_id)
     {
-        return '<iframe src="//www.bilibili.com/blackboard/player.html?aid=' . $a_id .'" width="1440px" height="810px" frameborder="no" scrolling="no"></iframe>"';
+        return '<iframe src="//www.bilibili.com/blackboard/player.html?aid=' . $a_id . '&page=' . $page_id . '" width="1440px" height="810px" frameborder="no" scrolling="no"></iframe>"';
     }
 
     public function normalizeImageUrl($get)
