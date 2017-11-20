@@ -118,6 +118,11 @@
                         <script id="editor1" name="image" type="text/plain">
                             {!! old('image') !!}
                         </script>
+                        @if ($errors->has('image'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('image    ') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <!-- 编辑器容器 -->

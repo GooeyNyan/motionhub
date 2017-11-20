@@ -34,6 +34,7 @@ class StoreVIPVideoRequest extends FormRequest
             'price' => 'required',
             'tb_link' => 'required',
             'download_link' => 'required',
+            'image' => 'required'
         ];
     }
 
@@ -47,10 +48,11 @@ class StoreVIPVideoRequest extends FormRequest
         return [
             'name.required' => '标题不能为空',
             'rank.required' => '评级不能为空',
+            'image.required' => '图片不能为空',
             'duration.required' => '视频时长不能为空',
             'price.required' => '价格不能为空',
             'tb_link.required' => '淘宝链接不能为空',
-            'download_link.required' => '淘宝链接不能为空',
+            'download_link.required' => '下载链接不能为空',
         ];
     }
 }

@@ -54,8 +54,7 @@ class VIPVideoController extends Controller
             $a_id = $request->get('avId');
             preg_match('/\d+/', $a_id, $a_id);
             $a_id = $a_id[0];
-            $c_id = $this->repository->getBilibiliCid($a_id);
-            $link = $this->repository->normalizeBilibiliUrl($a_id, $c_id);
+            $link = $this->repository->normalizeBilibiliUrl($a_id);
         }
 
         $duration = $this->repository->normalizeDuration($request->get('duration'));

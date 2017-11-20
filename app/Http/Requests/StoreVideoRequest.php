@@ -29,6 +29,7 @@ class StoreVideoRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'image' => 'required'
         ];
     }
 
@@ -41,6 +42,7 @@ class StoreVideoRequest extends FormRequest
     {
         return [
             'name.required' => '标题不能为空',
+            'image.required' => '图片不能为空',
         ];
     }
 }

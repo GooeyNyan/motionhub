@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Nyan
@@ -37,11 +38,9 @@ class VIPVideoRepository
         return $url;
     }
 
-    public function normalizeBilibiliUrl($a_id, $c_id)
+    public function normalizeBilibiliUrl($a_id)
     {
-        return '<iframe width="1440" height="810" src="https://www.bilibili.com/html/html5player.html?cid=' . $c_id . '&aid=' . $a_id . '&pre_ad=0"
-    frameborder="0" gesture="media" allowfullscreen>
-  </iframe>';
+        return '<iframe src="//www.bilibili.com/blackboard/player.html?aid=' . $a_id . '" width="1440px" height="810px" frameborder="no" scrolling="no"></iframe>"';
     }
 
     public function normalizeImageUrl($get)
