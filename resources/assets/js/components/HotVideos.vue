@@ -13,12 +13,13 @@
         </div>
         <div class="content">
             <div class="hero">
-                <video-item class="main" :video="hero"></video-item>
+                <video-item class="main" :video="hero" :admin="admin"></video-item>
             </div>
             <div class="other">
                 <div class="videos-wrapper">
                     <video-item v-for="(item, index) in other" :key="index"
-                                :video="item"></video-item>
+                                :video="item"
+                                :admin="admin"></video-item>
                 </div>
             </div>
         </div>
@@ -31,7 +32,7 @@
 
     export default {
         name: "hotVideos",
-        props: ['type', 'amount'],
+        props: ['type', 'amount', 'admin'],
         data: () => ({
             hero: [],
             other: [],

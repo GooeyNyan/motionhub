@@ -36,6 +36,7 @@
                             </span>
                         @endif
                     </div>
+                    <input type="checkbox" name="remember" checked style="display: none;">
                     <div class="signin_links">
                         <div class="link-wrapper">
                             <a href="{{ route('password.request') }}">忘记密码?</a>

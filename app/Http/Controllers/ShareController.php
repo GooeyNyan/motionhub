@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreShareRequest;
 use App\Http\Requests\StoreVideoRequest;
 use App\Repositories\ShareRepository;
 use App\Repositories\VideoRepository;
@@ -52,10 +53,11 @@ class ShareController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreVideoRequest|Request $request
+     * @param StoreShareRequest $request
      * @return \Illuminate\Http\Response
+     * @internal param $
      */
-    public function store(StoreVideoRequest $request)
+    public function store(StoreShareRequest $request)
     {
         $data = [
             'name' => $request->get('name'),

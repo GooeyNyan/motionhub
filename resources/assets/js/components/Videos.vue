@@ -13,7 +13,8 @@
         </div>
         <div class="content">
             <video-item v-for="(item, index) in videoList" :key="index"
-                        :video="item"></video-item>
+                        :video="item"
+                        :admin="admin"></video-item>
         </div>
     </div>
 </template>
@@ -24,7 +25,7 @@
 
     export default {
         name: "videos",
-        props: ['type', 'amount'],
+        props: ['type', 'amount', 'admin'],
         data: () => ({
             videoList: [],
             page: 1,

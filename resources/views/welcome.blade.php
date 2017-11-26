@@ -103,12 +103,23 @@
                 </div>
             </div>
             <div class="videos">
-
-                <category-videos></category-videos>
-                <hot-videos type="hot" amount="5"></hot-videos>
-                <videos type="new" amount="16"></videos>
-                <videos type="titles" amount="16"></videos>
-                <videos type="showreels" amount="16"></videos>
+                @if(Auth::check())
+                    <category-videos admin="{{ Auth::user()->isAdmin() == "1" ? 'true' : 'false' }}"></category-videos>
+                    <hot-videos type="hot" amount="5"
+                                admin="{{ Auth::user()->isAdmin() == "1" ? 'true' : 'false' }}"></hot-videos>
+                    <videos type="new" amount="16"
+                            admin="{{ Auth::user()->isAdmin() == "1" ? 'true' : 'false' }}"></videos>
+                    <videos type="titles" amount="16"
+                            admin="{{ Auth::user()->isAdmin() == "1" ? 'true' : 'false' }}"></videos>
+                    <videos type="showreels" amount="16"
+                            admin="{{ Auth::user()->isAdmin() == "1" ? 'true' : 'false' }}"></videos>
+                @else
+                    <category-videos></category-videos>
+                    <hot-videos type="hot" amount="5" admin="false"></hot-videos>
+                    <videos type="new" amount="16" admin="false"></videos>
+                    <videos type="titles" amount="16" admin="false"></videos>
+                    <videos type="showreels" amount="16" admin="false"></videos>
+                @endif
 
             </div>
             <div class="subscription-wrapper">
@@ -128,7 +139,8 @@
                             <a href="{{ route('subscribe.send') }}" class="btn">发送邮件</a>
                         @endif
                         <div class="text-box">
-                            <input type="email" name="email" required="required" placeholder="输入邮箱，订阅最新视频内容！" class="subscribe-input">
+                            <input type="email" name="email" required="required" placeholder="输入邮箱，订阅最新视频内容！"
+                                   class="subscribe-input">
                             <img src="{{ asset('images/icon/icon-envelope.png') }}" class="icon-envelope">
                         </div>
                     </form>

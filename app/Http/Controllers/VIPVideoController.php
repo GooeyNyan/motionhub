@@ -48,14 +48,14 @@ class VIPVideoController extends Controller
     public function store(StoreVideoRequest $request)
     {
         // handle video url
-        if ($request->get('link')) {
-            $link = $this->repository->normalizeVideoUrl($request->get('link'));
-        } else if ($request->get('avId')){
+        if ($request->get('avId')) {
             $a_id = $request->get('avId');
             preg_match_all("/(\d+)/", $a_id, $matches);
             $a_id = $matches[0][0];
             $page_id = isset($matches[0][1]) ? $matches[0][1] : "1";
             $link = $this->repository->normalizeBilibiliUrl($a_id, $page_id);
+        } else if ($request->get('link')) {
+            $link = $this->repository->normalizeVideoUrl($request->get('link'));
         }
 
         $duration = $this->repository->normalizeDuration($request->get('duration'));
@@ -83,6 +83,7 @@ class VIPVideoController extends Controller
 
     /**
      * Display the specified resource.
+     * @param $id
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
@@ -117,14 +118,14 @@ class VIPVideoController extends Controller
     public function update(StoreVideoRequest $request, $id)
     {
         // handle video url
-        if ($request->get('link')) {
-            $link = $this->repository->normalizeVideoUrl($request->get('link'));
-        } else if ($request->get('avId')){
+        if ($request->get('avId')) {
             $a_id = $request->get('avId');
             preg_match_all("/(\d+)/", $a_id, $matches);
             $a_id = $matches[0][0];
             $page_id = isset($matches[0][1]) ? $matches[0][1] : "1";
             $link = $this->repository->normalizeBilibiliUrl($a_id, $page_id);
+        } else if ($request->get('link')) {
+            $link = $this->repository->normalizeVideoUrl($request->get('link'));
         }
 
         $video = $this->repository->getVideoById($id);

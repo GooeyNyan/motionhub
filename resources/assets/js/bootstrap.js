@@ -2,11 +2,11 @@ import './select2.min'
 
 window.Swiper = require('./swiper.min');
 
-let rootURL = document.head.querySelector('meta[name="root-url"]').content;
-rootURL = rootURL.endsWith('/') ? rootURL : rootURL + "/";
+let root = document.head.querySelector('meta[name="root-url"]').content;
+root = root.endsWith('/') ? root : root + "/";
 
-window.rootURL = rootURL;
-window.apiRoot = `${rootURL}api/`;
+window.rootURL = root;
+window.apiRoot = `${root}api/`;
 
 window._ = require('lodash');
 
@@ -41,6 +41,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+window.csrfToken = csrfToken.content;
 let apiToken = document.head.querySelector('meta[name="api-token"]');
 
 if (csrfToken) {

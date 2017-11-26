@@ -13,7 +13,8 @@
         </div>
         <div v-if="videoList.length > 0" class="content" ref="videosWrapper">
             <video-item v-for="(item, index) in videoList" :key="index"
-                        :video="item"></video-item>
+                        :video="item"
+                        :admin="admin"></video-item>
         </div>
         <div v-if="videoList.length >= 12" class="header">
             <h2 class="title">{{ type.toUpperCase() }}</h2>
@@ -35,6 +36,7 @@
 
     export default {
         name: "categoryVideos",
+        props: ['admin'],
         data: () => ({
             videoList: [],
             page: 1,

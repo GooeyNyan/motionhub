@@ -17,6 +17,11 @@ use Illuminate\Http\Request;
 class VideoRepository
 {
 
+    public function getVideoById($id)
+    {
+        return Video::find($id);
+    }
+
     public function createVideo($data, $tags)
     {
         $video = Video::create($data);

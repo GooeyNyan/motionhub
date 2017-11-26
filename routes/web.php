@@ -44,4 +44,8 @@ Route::resource('vip', 'VIPVideoController');
 Route::resource('share', 'ShareController');
 Route::resource('subscribe', 'SubscriptionController');
 
-//Route::get("/test", "HomeController@test");
+Route::get("/test", function () {
+    $env = env("APP_URL");
+    echo $env;
+    echo 1;
+});

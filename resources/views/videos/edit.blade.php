@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="video-share-container">
-        <div class="video-share-wrapper">
+    <div class="video-submit-container">
+        <div class="video-submit-wrapper">
             <!-- logo -->
             <div class="logo">
                 <a href="{{ route('home') }}">
@@ -12,12 +12,12 @@
 
             <!-- create form -->
             <div class="form-wrapper">
-                <form action="{{ route('share.store') }}" method="POST">
+                <form action="{{ route('video.store') }}" method="POST">
                     {{ csrf_field() }}
 
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
                         <label for="name">标题</label>
-                        <input name="name" class="form-control" placeholder="标题" id="name" value="{!! old('name') !!}">
+                        <input name="name" value="{{ $video->name }}" class="form-control" placeholder="标题" id="name" required="required">
                         @if ($errors->has('name'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -27,7 +27,7 @@
 
                     <div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}">
                         <label for="link">视频链接</label>
-                        <input name="link" class="form-control" placeholder="视频链接" id="link" value="{!! old('link') !!}">
+                        <input name="link" value="{{ $video->link }}" class="form-control" placeholder="视频外链" id="link">
                         @if ($errors->has('link'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('link') }}</strong>
@@ -35,16 +35,75 @@
                         @endif
                     </div>
 
+                    <div class="form-group {{ $errors->has('avId') ? 'has-error' : ''}}">
+                        <label for="avId">B站av号</label>
+                        <input name="avId" class="form-control" placeholder="或者提交B站av号、分p号，如：av1255186,p2" id="avId">
+                        @if ($errors->has('avId'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('avId') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">分类</label>
+                        <select class="js-example-basic-single" name="category" id="category" required="required">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- tags --}}
+                    <div class="form-group">
+                        <label for="tag">标签</label>
+                        <select name="tags[]" class="placeholder-multiple form-control" multiple="multiple"
+                                id="tag"></select>
+                    </div>
+
+                    <!-- 上传图片容器 -->
+                    <div class="form-group">
+                        <label for="image">图片</label>
+                        <script id="editor1" name="image" type="text/plain">
+                            {!! old('image') !!}
+                        </script>
+                        @if ($errors->has('image'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('image    ') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
                     <!-- 编辑器容器 -->
                     <div class="form-group">
-                        <label for="desc">推荐理由</label>
+                        <label for="desc">描述</label>
                         <script id="editor2" name="desc" type="text/plain">
                             {!! old('desc') !!}
                         </script>
                     </div>
 
+                    <div class="form-group {{ $errors->has('download') ? 'has-error' : ''}}">
+                        <label for="download">下载链接</label>
+                        <input name="download" value="{{ $video->download }}" class="form-control" placeholder="可空" id="download">
+                        @if ($errors->has('download'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('download') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group {{ $errors->has('netdisk_key') ? 'has-error' : ''}}">
+                        <label for="netdisk_key">网盘密码</label>
+                        <input name="netdisk_key" value="{{ $video->netdisk_key }}" class="form-control" placeholder="可空" id="netdisk_key">
+                        @if ($errors->has('netdisk_key'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('netdisk_key') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
                     <div class="button-wrapper">
-                        <button class="video-submit-btn">推荐视频</button>
+                        <button class="video-submit-btn">提交视频</button>
                     </div>
                 </form>
             </div>
