@@ -7,6 +7,9 @@
         </div>
     @else
         @if(Auth::user()->isAdmin())
+            <div class="header-btn" style="right: 22.2083vw;">
+                <a href="{{ route('admin') }}">权限分配</a>
+            </div>
             <div class="header-btn" style="right: 15.2083vw;">
                 <a href="{{ route('share.index') }}">分享总览</a>
             </div>

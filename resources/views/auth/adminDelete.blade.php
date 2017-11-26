@@ -12,8 +12,9 @@
 
             <!-- create form -->
             <div class="form-wrapper">
-                <form action="{{ route('admin') }}" method="POST">
+                <form action="{{ route('admin.delete') }}" method="POST">
                     {{ csrf_field() }}
+                    {{ method_field("DELETE") }}
 
                     <div class="form-group">
                         <label for="name">用户</label>
@@ -21,7 +22,7 @@
                     </div>
 
                     <div class="button-wrapper">
-                        <button class="video-submit-btn">给予管理员权限</button>
+                        <button class="video-submit-btn" style="background-color: rgba(204, 41, 4, 0.7);">删除管理员权限</button>
                     </div>
                 </form>
             </div>

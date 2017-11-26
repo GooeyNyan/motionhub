@@ -20,7 +20,6 @@ Route::middleware('api')->get('/user', function (Request $request) {
         ->first();
 });
 
-
 Route::get('/videos/hot', 'APIController@getHottestVideos')->middleware('api');
 Route::get('/videos/new', 'APIController@getNewestVideos')->middleware('api');
 Route::get('/videos/category', 'APIController@getVideosOfACategory')->middleware('api');

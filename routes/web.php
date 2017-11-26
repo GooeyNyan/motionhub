@@ -33,10 +33,15 @@ Route::post('/vip/{id}/key/show', 'VIPVideoController@key')->name('vip.key.show'
 Route::get('/subscribe/send', 'SubscriptionController@send')->name('subscribe.send')->middleware('admin');
 Route::post('/subscribe/send', 'SubscriptionController@sendEmailToUsers')->name('subscribe.send')->middleware('admin');
 
+// admin
+Route::get('/admin', "AdminController@index")->name("admin")->middleware('admin');
+Route::post('/admin', "AdminController@store")->name("admin")->middleware('admin');
+Route::get('/admin/delete', "AdminController@showDelete")->name("admin.delete")->middleware('admin');
+Route::delete('/admin/delete', "AdminController@delete")->name("admin.delete")->middleware('admin');
 
 Route::resource('video', 'VideoController');
 Route::resource('vip', 'VIPVideoController');
 Route::resource('share', 'ShareController');
 Route::resource('subscribe', 'SubscriptionController');
 
-Route::get("/test", "HomeController@test");
+//Route::get("/test", "HomeController@test");
